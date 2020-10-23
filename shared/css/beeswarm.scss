@@ -1,0 +1,108 @@
+.interactive-atom {
+    margin: 0;
+    padding: 0;
+    background: white;
+}
+
+.interactive-wrapper-bees{
+	border-top: 1px solid #dcdcdc;
+	border-bottom: 1px solid #dcdcdc;
+}
+
+.tick line {
+    stroke-width: 1;
+    stroke-dasharray: 1,2;
+    stroke: #bababa;
+    fill: none;
+}
+
+.tick text {
+    font-size: 12px;
+    font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    fill: #bababa;
+}
+
+.bees-header {
+    font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    font-size: 16px;
+    color:#333;
+    margin: 12px 0 0px 0;
+}
+
+.key-bees{
+	display: flex;
+	justify-content: space-between;
+}
+
+.key-wrapper {
+
+	display: flex;
+    font-size: 16px;
+    font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    font-weight: 900;
+    width: 100%;
+    align-items: center;
+    width: 50%;
+
+    &.dem{
+    	flex-direction: row-reverse;
+        justify-content: start;
+        fill:#25428F;;
+    }
+    &.rep{
+        justify-content: end;
+        fill:#c70000;
+    }
+
+    svg{
+        height: 5px;
+        width: 30px;
+    }
+
+    span{
+
+        max-width: 200px;
+
+         @include mq($from: 100px, $until: 620px){
+            max-width: 100px;
+         }
+        
+    }
+    
+}
+
+.key-text-dem{
+	margin-left: 6px;
+    color: #25428F;
+
+}
+
+.key-text-rep{
+	margin-right: 6px;
+    color: #c70000;
+}
+
+.bees-subheader{
+
+    font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    font-size: 14px;
+    color:#bababa;
+    margin-bottom: 12px;
+
+    .bees-subheader-pp{
+        line-height: 120%;
+        font-family: "Guardian Headline","Guardian Egyptian Web","Guardian Headline Full",Georgia,serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+
+        &.Republicans{
+            color: #c70000;
+        }
+
+        &.Democrats{
+            color: #25428F;
+        }
+    }
+
+}

@@ -1,0 +1,188 @@
+@import "fonts";
+@import "mq";
+@import "palette";
+@import "scrolly";
+@import "enhancer";
+
+
+
+.scroll-inner svg {
+	overflow: hidden;
+}
+
+.scroll-text {
+
+	margin-left: 55%;
+
+    @include mq($from: 100px, $until: 499px) {
+    	margin-left: 0;
+    	z-index: -1;
+    	margin-top:calc(100% + 20px);
+    }
+}
+
+.scroll-text__div {
+    width: calc(100% - 22px);
+    max-width: 420px;
+    
+    @include mq(desktop) {
+        width: 420px;
+    }
+    margin-left: 0px;
+    background-color: #fff;
+    border: 1px solid #bababa;
+    padding: 6px 10px 0px;
+
+    font-family: 'Guardian Text Egyptian Web', Georgia, serif;
+    font-size: 16px;
+    line-height: 26px;
+    padding-top: 4px;
+    padding-bottom: 0px;
+
+}
+
+.blob-headline{
+	 font-family: 'Guardian Headline', 'Guardian Egyptian Web', 'Guardian Headline Full', Georgia, serif;
+	 font-weight: bold;
+	 font-size: 20px;
+}
+
+
+.interactive-atom {
+    margin: 0;
+    padding: 0;
+    background: white;
+}
+
+.interactive-wrapper{
+ 	display: flex;
+	flex-direction: column;
+
+	@include mq($from: 100px, $until: 499px) {
+    	border-bottom: 1px solid #dcdcdc;
+    }
+}
+
+.map-container{
+	position: relative;
+}
+
+.map-container.R,.map-container.D{
+	max-width: 600px;
+}
+
+
+.canvas-swing, .svg-annotations{
+	position: absolute;
+	left:0px;
+	top:0px;
+
+	text{
+		font-size:12px;
+	}
+}
+
+.elex-state{
+	fill:none;
+	stroke:#bababa;
+
+	&.swing{
+		stroke-width:2px;
+		stroke:#333;
+	}
+}
+
+.elex-state-zoom{
+	stroke:#bababa;
+	stroke-width:2.5px;
+	fill:none;
+}
+
+.elex-county{
+	fill:none;
+	stroke:#dadada;
+}
+
+.arrow-poly.D{
+	fill:#25428F;
+}
+
+.arrow-poly.R{
+	fill:#C70000;
+}
+
+.arrow-stroke.D{
+	fill:none;
+	stroke:#25428F;
+	stroke-width:4px;
+}
+
+.arrow-stroke.R{
+	fill:none;
+	stroke:#c70000;
+	stroke-width:4px;
+}
+
+.map-label{
+
+	font-family: 'Guardian Text Sans Web', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	text-align: center;
+	fill:#333;
+}
+
+.map-container.all
+{
+	@include mq($from: 100px, $until: 620px){
+	    position: relative;
+	    z-index: 1;
+	    background: #fff;
+	    margin: 0 auto;
+  	}
+}
+
+
+canvas{
+	pointer-events: none;
+}
+
+.svg-labels{
+	position: absolute;
+	top:0;
+	left: 0;
+}
+
+
+.city-label, .city-label-white {
+	fill:#333;
+    font-size: 14px;
+    line-height: 115%;
+    font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    pointer-events: none;
+
+    &.capital{
+		font-weight: 700;
+    }
+
+    &.city{
+		font-weight: 300;
+    }
+}
+
+.city-label-white{
+	stroke: #fff;
+    stroke-width: 5;
+    stroke-linejoin: round;
+    stroke-opacity: 1;
+    fill: none;
+    mix-blend-mode: soft-light;
+}
+
+.city-label-circle{
+	fill: #121212;
+	stroke:#fff;
+	stroke-width:1px;
+    pointer-events: none;
+}
+

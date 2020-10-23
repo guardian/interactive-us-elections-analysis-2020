@@ -1,22 +1,24 @@
 @import "fonts";
 @import "mq";
 @import "palette";
-//@import "enhancer";
+@import "scrolly";
+@import "enhancer";
+
+
+
+.scroll-inner svg {
+	overflow: hidden;
+}
 
 .interactive-atom {
     margin: 0;
     padding: 0;
     background: white;
-
-    
 }
 
 .interactive-wrapper{
  	display: flex;
 	flex-direction: column; 
-
-	border-top: 0.0625rem solid #dcdcdc;
-    border-bottom: 0.0625rem solid #dcdcdc;
 }
 
 .map-container{
@@ -65,4 +67,21 @@
 
 .map-label{
 	
+}
+
+.map-container.all
+{
+	@include mq($from: 100px, $until: 620px){
+	    position: relative;
+	    z-index: 1;
+	    background: #fff;
+	    margin: 0 auto;
+  	}
+}
+.scroll-text {
+
+    @include mq($from: 100px, $until: 499px) {
+                z-index: -1;
+               // margin-top:calc(100% + 30px);
+    }
 }

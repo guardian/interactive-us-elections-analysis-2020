@@ -1,0 +1,902 @@
+{
+  "NY": [
+    {
+      "name": "Albany",
+      "capital": true,
+      "lat": 42.666,
+      "lng": -73.799,
+      "ta": "end"
+    },
+    {
+      "name": "New York",
+      "capital": false,
+      "lat": 40.694,
+      "lng": -73.925
+    },
+    {
+      "name": "Buffalo",
+      "capital": false,
+      "lat": 42.902,
+      "lng": -78.849,
+      "ta": "start"
+    }
+  ],
+  "CA": [
+    {
+      "name": "Sacramento",
+      "capital": true,
+      "lat": 38.567,
+      "lng": -121.468
+    },
+    {
+      "name": "Los Angeles",
+      "capital": false,
+      "lat": 34.114,
+      "lng": -118.407,
+      "ta": "end"
+    },
+    {
+      "name": "San Francisco",
+      "capital": false,
+      "lat": 37.756,
+      "lng": -122.443,
+      "ta": "end"
+    },
+    {
+      "name": "San Diego",
+      "capital": false,
+      "lat": 32.831,
+      "lng": -117.122,
+      "ta": "end"
+    }
+  ],
+  "IL": [
+    {
+      "name": "Springfield",
+      "capital": true,
+      "lat": 39.771,
+      "lng": -89.654
+    },
+    {
+      "name": "Chicago",
+      "capital": false,
+      "lat": 41.837,
+      "lng": -87.686
+    },
+    {
+      "name": "Rockford",
+      "capital": false,
+      "lat": 42.26,
+      "lng": -89.064
+    }
+  ],
+  "FL": [
+    {
+      "name": "Tallahassee",
+      "capital": true,
+      "lat": 30.455,
+      "lng": -84.253,
+      "ta": "start"
+    },
+    {
+      "name": "Miami",
+      "capital": false,
+      "lat": 25.784,
+      "lng": -80.21,
+      "ta": "end"
+    },
+    {
+      "name": "Tampa",
+      "capital": false,
+      "lat": 27.994,
+      "lng": -82.445,
+      "ta": "start"
+    }
+  ],
+  "TX": [
+    {
+      "name": "Austin",
+      "capital": true,
+      "lat": 30.3,
+      "lng": -97.752
+    },
+    {
+      "name": "Dallas",
+      "capital": false,
+      "lat": 32.794,
+      "lng": -96.766
+    },
+    {
+      "name": "Houston",
+      "capital": false,
+      "lat": 29.786,
+      "lng": -95.389
+    },
+    {
+      "name": "San Antonio",
+      "capital": false,
+      "lat": 29.466,
+      "lng": -98.525,
+      "ta": "end"
+    }
+  ],
+  "PA": [
+    {
+      "name": "Harrisburg",
+      "capital": true,
+      "lat": 40.275,
+      "lng": -76.884
+    },
+    {
+      "name": "Philadelphia",
+      "capital": false,
+      "lat": 40.008,
+      "lng": -75.134,
+      "ta": "end"
+    },
+    {
+      "name": "Pittsburgh",
+      "capital": false,
+      "lat": 40.44,
+      "lng": -79.976
+    }
+  ],
+  "GA": [
+    {
+      "name": "Atlanta",
+      "capital": true,
+      "lat": 33.763,
+      "lng": -84.422
+    },
+    {
+      "name": "Augusta",
+      "capital": false,
+      "lat": 33.365,
+      "lng": -82.071,
+      "ta": "end"
+    }
+  ],
+  "MA": [
+    {
+      "name": "Boston",
+      "capital": true,
+      "lat": 42.319,
+      "lng": -71.085,
+      "ta": "end"
+    },
+    {
+      "name": "Springfield",
+      "capital": false,
+      "lat": 42.116,
+      "lng": -72.539
+    }
+  ],
+  "AZ": [
+    {
+      "name": "Phoenix",
+      "capital": true,
+      "lat": 33.572,
+      "lng": -112.089
+    },
+    {
+      "name": "Tucson",
+      "capital": false,
+      "lat": 32.155,
+      "lng": -110.878
+    }
+  ],
+  "WA": [
+    {
+      "name": "Olympia",
+      "capital": true,
+      "lat": 47.042,
+      "lng": -122.896,
+      "ta": "start"
+    },
+    {
+      "name": "Seattle",
+      "capital": false,
+      "lat": 47.621,
+      "lng": -122.324,
+      "ta": "start"
+    },
+    {
+      "name": "Spokane",
+      "capital": false,
+      "lat": 47.667,
+      "lng": -117.433
+    }
+  ],
+  "MI": [
+    {
+      "name": "Lansing",
+      "capital": true,
+      "lat": 42.714,
+      "lng": -84.56
+    },
+    {
+      "name": "Detroit",
+      "capital": false,
+      "lat": 42.383,
+      "lng": -83.102,
+      "ta": "start"
+    },
+    {
+      "name": "Grand Rapids",
+      "capital": false,
+      "lat": 42.962,
+      "lng": -85.656
+    }
+  ],
+  "CO": [
+    {
+      "name": "Denver",
+      "capital": true,
+      "lat": 39.762,
+      "lng": -104.876
+    },
+    {
+      "name": "Colorado Springs",
+      "capital": false,
+      "lat": 38.867,
+      "lng": -104.761
+    }
+  ],
+  "MD": [
+    {
+      "name": "Annapolis",
+      "capital": true,
+      "lat": 38.971,
+      "lng": -76.505
+    },
+    {
+      "name": "Baltimore",
+      "capital": false,
+      "lat": 39.305,
+      "lng": -76.614,
+      "ta": "start"
+    },
+    {
+      "name": "Hagerstown",
+      "capital": false,
+      "lat": 39.64,
+      "lng": -77.722,
+      "ta": "start"
+    }
+  ],
+  "NV": [
+    {
+      "name": "Carson City",
+      "capital": true,
+      "lat": 39.151,
+      "lng": -119.747,
+      "ta": "start"
+    },
+    {
+      "name": "Las Vegas",
+      "capital": false,
+      "lat": 36.233,
+      "lng": -115.265
+    },
+    {
+      "name": "Reno",
+      "capital": false,
+      "lat": 39.55,
+      "lng": -119.848,
+      "ta": "start"
+    }
+  ],
+  "OR": [
+    {
+      "name": "Salem",
+      "capital": true,
+      "lat": 44.923,
+      "lng": -123.025
+    },
+    {
+      "name": "Portland",
+      "capital": false,
+      "lat": 45.537,
+      "lng": -122.65
+    },
+    {
+      "name": "Eugene",
+      "capital": false,
+      "lat": 44.056,
+      "lng": -123.117
+    }
+  ],
+  "MO": [
+    {
+      "name": "Jefferson City",
+      "capital": true,
+      "lat": 38.568,
+      "lng": -92.176,
+      "ta": "end"
+    },
+    {
+      "name": "St. Louis",
+      "capital": false,
+      "lat": 38.636,
+      "lng": -90.245,
+      "ta": "end"
+    },
+    {
+      "name": "Kansas City",
+      "capital": false,
+      "lat": 39.124,
+      "lng": -94.554,
+      "ta": "start"
+    }
+  ],
+  "OH": [
+    {
+      "name": "Columbus",
+      "capital": true,
+      "lat": 39.986,
+      "lng": -82.985
+    },
+    {
+      "name": "Cleveland",
+      "capital": false,
+      "lat": 41.477,
+      "lng": -81.68
+    },
+    {
+      "name": "Cincinnati",
+      "capital": false,
+      "lat": 39.141,
+      "lng": -84.506,
+      "ta": "start"
+    }
+  ],
+  "IN": [
+    {
+      "name": "Indianapolis",
+      "capital": true,
+      "lat": 39.777,
+      "lng": -86.146
+    },
+    {
+      "name": "Fort Wayne",
+      "capital": false,
+      "lat": 41.089,
+      "lng": -85.144,
+      "ta": "end"
+    }
+  ],
+  "NC": [
+    {
+      "name": "Raleigh",
+      "capital": true,
+      "lat": 35.833,
+      "lng": -78.643
+    },
+    {
+      "name": "Charlotte",
+      "capital": false,
+      "lat": 35.208,
+      "lng": -80.83
+    }
+  ],
+  "VA": [
+    {
+      "name": "Richmond",
+      "capital": true,
+      "lat": 37.53,
+      "lng": -77.476
+    },
+    {
+      "name": "Virginia Beach",
+      "capital": false,
+      "lat": 36.734,
+      "lng": -76.043,
+      "ta": "end"
+    }
+  ],
+  "WI": [
+    {
+      "name": "Madison",
+      "capital": true,
+      "lat": 43.083,
+      "lng": -89.393,
+      "ta": "end"
+    },
+    {
+      "name": "Milwaukee",
+      "capital": false,
+      "lat": 43.064,
+      "lng": -87.967
+    }
+  ],
+  "RI": [
+    {
+      "name": "Providence",
+      "capital": true,
+      "lat": 41.823,
+      "lng": -71.419
+    },
+    {
+      "name": "Cranston",
+      "capital": false,
+      "lat": 41.766,
+      "lng": -71.486,
+      "ta": "end"
+    }
+  ],
+  "UT": [
+    {
+      "name": "Salt Lake City",
+      "capital": true,
+      "lat": 40.778,
+      "lng": -111.931,
+      "ta": "end"
+    },
+    {
+      "name": "Ogden",
+      "capital": false,
+      "lat": 41.228,
+      "lng": -111.968
+    }
+  ],
+  "TN": [
+    {
+      "name": "Nashville",
+      "capital": true,
+      "lat": 36.172,
+      "lng": -86.784
+    },
+    {
+      "name": "Memphis",
+      "capital": false,
+      "lat": 35.105,
+      "lng": -89.977,
+      "ta": "start"
+    }
+  ],
+  "LA": [
+    {
+      "name": "Baton Rouge",
+      "capital": true,
+      "lat": 30.442,
+      "lng": -91.131
+    },
+    {
+      "name": "New Orleans",
+      "capital": false,
+      "lat": 30.069,
+      "lng": -89.929,
+      "ta": "end"
+    }
+  ],
+  "KY": [
+    {
+      "name": "Frankfort",
+      "capital": true,
+      "lat": 38.192,
+      "lng": -84.864
+    },
+    {
+      "name": "Louisville",
+      "capital": false,
+      "lat": 38.166,
+      "lng": -85.648,
+      "ta": "end"
+    },
+    {
+      "name": "Lexington",
+      "capital": false,
+      "lat": 38.042,
+      "lng": -84.459,
+      "ta": "start"
+    }
+  ],
+  "OK": [
+    {
+      "name": "Oklahoma City",
+      "capital": true,
+      "lat": 35.468,
+      "lng": -97.514
+    },
+    {
+      "name": "Tulsa",
+      "capital": false,
+      "lat": 36.128,
+      "lng": -95.904
+    }
+  ],
+  "CT": [
+    {
+      "name": "Hartford",
+      "capital": true,
+      "lat": 41.766,
+      "lng": -72.683
+    },
+    {
+      "name": "Bridgeport",
+      "capital": false,
+      "lat": 41.192,
+      "lng": -73.195
+    }
+  ],
+  "NE": [
+    {
+      "name": "Lincoln",
+      "capital": true,
+      "lat": 40.809,
+      "lng": -96.679,
+      "ta": "end"
+    },
+    {
+      "name": "Omaha",
+      "capital": false,
+      "lat": 41.263,
+      "lng": -96.052,
+      "ta": "end"
+    }
+  ],
+  "HI": [
+    {
+      "name": "Honolulu",
+      "capital": true,
+      "lat": 21.329,
+      "lng": -157.846,
+      "ta": "start"
+    },
+    {
+      "name": "Hilo",
+      "capital": false,
+      "lat": 19.689,
+      "lng": -155.086
+    }
+  ],
+  "NM": [
+    {
+      "name": "Santa Fe",
+      "capital": true,
+      "lat": 35.662,
+      "lng": -105.982
+    },
+    {
+      "name": "Albuquerque",
+      "capital": false,
+      "lat": 35.105,
+      "lng": -106.646,
+      "ta": "start"
+    },
+    {
+      "name": "Las Cruces",
+      "capital": false,
+      "lat": 32.327,
+      "lng": -106.789
+    }
+  ],
+  "AL": [
+    {
+      "name": "Montgomery",
+      "capital": true,
+      "lat": 32.347,
+      "lng": -86.267
+    },
+    {
+      "name": "Birmingham",
+      "capital": false,
+      "lat": 33.528,
+      "lng": -86.799
+    },
+    {
+      "name": "Huntsville",
+      "capital": false,
+      "lat": 34.699,
+      "lng": -86.641
+    }
+  ],
+  "SC": [
+    {
+      "name": "Columbia",
+      "capital": true,
+      "lat": 34.038,
+      "lng": -80.904
+    },
+    {
+      "name": "Charleston",
+      "capital": false,
+      "lat": 32.815,
+      "lng": -79.963
+    }
+  ],
+  "KS": [
+    {
+      "name": "Topeka",
+      "capital": true,
+      "lat": 39.035,
+      "lng": -95.695,
+      "ta": "end"
+    },
+    {
+      "name": "Wichita",
+      "capital": false,
+      "lat": 37.69,
+      "lng": -97.344
+    },
+    {
+      "name": "Kansas City",
+      "capital": false,
+      "lat": 39.123,
+      "lng": -94.744,
+      "ta": "end"
+    }
+  ],
+  "IA": [
+    {
+      "name": "Des Moines",
+      "capital": true,
+      "lat": 41.573,
+      "lng": -93.61
+    },
+    {
+      "name": "Davenport",
+      "capital": false,
+      "lat": 41.556,
+      "lng": -90.605,
+      "ta": "end"
+    }
+  ],
+  "AR": [
+    {
+      "name": "Little Rock",
+      "capital": true,
+      "lat": 34.726,
+      "lng": -92.358
+    },
+    {
+      "name": "Fayetteville",
+      "capital": false,
+      "lat": 36.071,
+      "lng": -94.166,
+      "ta": "start"
+    }
+  ],
+  "ID": [
+    {
+      "name": "Boise",
+      "capital": true,
+      "lat": 43.601,
+      "lng": -116.231,
+      "ta": "start"
+    },
+    {
+      "name": "Nampa",
+      "capital": false,
+      "lat": 43.585,
+      "lng": -116.563
+    }
+  ],
+  "MS": [
+    {
+      "name": "Jackson",
+      "capital": true,
+      "lat": 32.316,
+      "lng": -90.212
+    },
+    {
+      "name": "Gulfport",
+      "capital": false,
+      "lat": 30.427,
+      "lng": -89.07
+    }
+  ],
+  "NJ": [
+    {
+      "name": "Trenton",
+      "capital": true,
+      "lat": 40.224,
+      "lng": -74.764
+    },
+    {
+      "name": "Newark",
+      "capital": false,
+      "lat": 40.725,
+      "lng": -74.172
+    }
+  ],
+  "AK": [
+    {
+      "name": "Juneau",
+      "capital": true,
+      "lat": 58.455,
+      "lng": -134.174
+    },
+    {
+      "name": "Anchorage",
+      "capital": false,
+      "lat": 61.151,
+      "lng": -149.109
+    },
+    {
+      "name": "Fairbanks",
+      "capital": false,
+      "lat": 64.835,
+      "lng": -147.653
+    }
+  ],
+  "NH": [
+    {
+      "name": "Concord",
+      "capital": true,
+      "lat": 43.231,
+      "lng": -71.559
+    },
+    {
+      "name": "Nashua",
+      "capital": false,
+      "lat": 42.749,
+      "lng": -71.491,
+      "ta": "end"
+    },
+    {
+      "name": "Manchester",
+      "capital": false,
+      "lat": 42.985,
+      "lng": -71.445,
+      "ta": "start"
+    }
+  ],
+  "ND": [
+    {
+      "name": "Bismarck",
+      "capital": true,
+      "lat": 46.814,
+      "lng": -100.769
+    },
+    {
+      "name": "Fargo",
+      "capital": false,
+      "lat": 46.865,
+      "lng": -96.829,
+      "ta": "end"
+    }
+  ],
+  "ME": [
+    {
+      "name": "Augusta",
+      "capital": true,
+      "lat": 44.334,
+      "lng": -69.732
+    },
+    {
+      "name": "Portland",
+      "capital": false,
+      "lat": 43.677,
+      "lng": -70.271
+    },
+    {
+      "name": "Bangor",
+      "capital": false,
+      "lat": 44.832,
+      "lng": -68.791
+    }
+  ],
+  "SD": [
+    {
+      "name": "Pierre",
+      "capital": true,
+      "lat": 44.375,
+      "lng": -100.32
+    },
+    {
+      "name": "Sioux Falls",
+      "capital": false,
+      "lat": 43.54,
+      "lng": -96.732,
+      "ta": "end"
+    },
+    {
+      "name": "Rapid City",
+      "capital": false,
+      "lat": 44.072,
+      "lng": -103.22
+    }
+  ],
+  "WV": [
+    {
+      "name": "Charleston",
+      "capital": true,
+      "lat": 38.348,
+      "lng": -81.632,
+      "ta": "start"
+    },
+    {
+      "name": "Huntington",
+      "capital": false,
+      "lat": 38.411,
+      "lng": -82.434
+    }
+  ],
+  "MT": [
+    {
+      "name": "Helena",
+      "capital": true,
+      "lat": 46.597,
+      "lng": -112.02
+    },
+    {
+      "name": "Billings",
+      "capital": false,
+      "lat": 45.789,
+      "lng": -108.552
+    },
+    {
+      "name": "Missoula",
+      "capital": false,
+      "lat": 46.875,
+      "lng": -114.021
+    }
+  ],
+  "DE": [
+    {
+      "name": "Dover",
+      "capital": true,
+      "lat": 39.161,
+      "lng": -75.52
+    },
+    {
+      "name": "Wilmington",
+      "capital": false,
+      "lat": 39.742,
+      "lng": -75.541,
+      "ta": "start"
+    }
+  ],
+  "VT": [
+    {
+      "name": "Montpelier",
+      "capital": true,
+      "lat": 44.266,
+      "lng": -72.572
+    },
+    {
+      "name": "Burlington",
+      "capital": false,
+      "lat": 44.488,
+      "lng": -73.231
+    },
+    {
+      "name": "Barre",
+      "capital": false,
+      "lat": 44.2,
+      "lng": -72.508,
+      "ta": "start"
+    }
+  ],
+  "WY": [
+    {
+      "name": "Cheyenne",
+      "capital": true,
+      "lat": 41.135,
+      "lng": -104.79
+    },
+    {
+      "name": "Casper",
+      "capital": false,
+      "lat": 42.842,
+      "lng": -106.321
+    }
+  ],
+  "MN": [
+    {
+      "name": "St. Paul",
+      "capital": false,
+      "lat": 44.948,
+      "lng": -93.104,
+      "ta": "start"
+    },
+    {
+      "name": "Minneapolis",
+      "capital": false,
+      "lat": 44.964,
+      "lng": -93.268,
+      "ta": "end"
+    }
+  ]
+}
