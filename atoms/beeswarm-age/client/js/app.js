@@ -49,6 +49,8 @@ let agesVariables = [
 '40-45 years old',
 'Over 45 years old'
 ]
+
+
 	
 let isMobile = window.matchMedia('(max-width: 700px)').matches;
 
@@ -56,7 +58,7 @@ const atomEl = d3.select('.interactive-wrapper-bees-age').node();
 
 let width = atomEl.getBoundingClientRect().width;
 
-const margin = {top:0,right:5,bottom:0,left:5};
+const margin = {top:15,right:5,bottom:0,left:5};
 
 const padding = isMobile ? 0 : 0.5;
 
@@ -65,8 +67,47 @@ let xScale = d3.scaleLinear()
 .domain(d3.extent(data, d => d.swing))
 
 let radius = d3.scaleSqrt()
-.range([isMobile ? 1 : 1.8, isMobile ? 2 : 6])
-.domain([0,d3.max(demographics, d => d.population)])
+.range([0,.5,1,2,4,8])
+.domain([0,1000, 10000, 100000, 1000000, d3.max(demographics, d => d.population)])
+
+let legend = d3.select('.interactive-wrapper-bees-age')
+.append("div")
+.attr('class', 'legend-bees')
+
+legend.append('p')
+.html('Population')
+
+
+const lsvg = legend.append('svg')
+.attr('width', 110)
+.attr('height', 20)
+
+let iniText = lsvg.append('text')
+.attr('x', 0)
+.attr('y',15)
+.attr('class', 'legend-tick')
+.text('10,000')
+
+let rAcumm = 0;
+
+lsvg.selectAll('circle')
+.data([100000, 1000000,10000000])
+.enter()
+.append('circle')
+.attr('cx', (d,i) =>{
+	rAcumm += radius(d)
+
+	return radius(d) + rAcumm + iniText.node().getBoundingClientRect().width + 2
+})
+.attr('class', 'legend-circle')
+.attr('cy', 10)
+.attr('r', d => radius(d))
+
+lsvg.append('text')
+.attr('x', 82)
+.attr('y',15)
+.attr('class', 'legend-tick')
+.text('10m')
 
 let dist = 0;
 
@@ -80,13 +121,13 @@ const makeChart = (svg, dodge, max, className) => {
 	.append("circle")
 	.attr('class', d => d.data.id + ' p' + d.data.population + ' s' + d.data.swing )
 	.attr("cx", d => d.x)
-	.attr("cy", d => max.y + max.r - margin.bottom - d.y)
+	.attr("cy", d => (max.y + max.r - margin.bottom - d.y) + margin.top)
 	.attr("r", d => d.r)
 	.style('fill', d => d.data.swing < 0 ? "#25428F" : '#c70000')
 
 	svg.attr('height', max.y + max.r)
 
-	dist = d3.select('.' + className).node().getBoundingClientRect().height;
+	dist = d3.select('.' + className).node().getBoundingClientRect().height + margin.top;
 
 	svg.attr('height', dist)
 }
@@ -95,8 +136,6 @@ const makeChart = (svg, dodge, max, className) => {
 agesVariables.map(v => {
 
 	let datum = data.filter(d => d.age_bucket === v);
-
-	console.log('===',data)
 
 	let dodge = new Dodge(datum, xScale, radius, padding);
 
@@ -107,8 +146,7 @@ agesVariables.map(v => {
 	.attr("class", 'bees-header')
 	.html(v)
 
-
-	let repPP = datum.filter(f => f.swing > 0).length * 100 / datum.length;
+	/*let repPP = datum.filter(f => f.swing > 0).length * 100 / datum.length;
 	let demPP = 100 - repPP;
 
 	let maxPP = d3.max([repPP, demPP])
@@ -132,7 +170,7 @@ agesVariables.map(v => {
 	subheader
 	.append('span')
 	.attr('class', 'bees-subheader-text')
-	.html(' swinging to ' + winner[0])
+	.html(' swinging to ' + winner[0])*/
 
 	let svg = d3.select('.interactive-wrapper-bees-age')
 	.append("svg")
