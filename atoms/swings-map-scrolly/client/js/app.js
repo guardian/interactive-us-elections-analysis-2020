@@ -7,6 +7,8 @@ import data from 'shared/js/data-parser.js'
 import annotations from 'assets/json/annotations.json'
 import cities from 'assets/json/city_labels.json'
 
+//import data2016Raw from 'assets/json/president_county_details.json'
+
 //====================STRUCTURE===================
 
 const dpr = window.devicePixelRatio || 1;
@@ -33,17 +35,17 @@ const divAnnotations = divAll.append('div')
 const width = atomEl.node().getBoundingClientRect().width;
 const height = isMobile ? window.innerHeight / 2 : window.innerHeight;
 
-const margin = {top:0, right:0, bottom:0, left:isMobile?-40:-100}
+const margin = {top:0, right:0, bottom:50, left:isMobile?-40:-100}
 
 let extents = [
 {
         type: "LineString",
         id:'US',
          coordinates: [
-            [-119,50],//[minLon, maxLat]
+            [-120,50],//[minLon, maxLat]
             [-73,50],//[maxLon, maxLat
             [-73,24],//[maxLon, minLat]
-            [-119,24]//[minLon, minLat]
+            [-120,24]//[minLon, minLat]
         ]
 },
 {type: "LineString",id:"42",name:"Pennsylvania",coordinates:[[-81,38.1],[-73,38.1],[-73,42.51468907],[-81,42.51468907]]},
@@ -55,7 +57,7 @@ let extents = [
 ];
 
 let projection = d3.geoAlbersUsa()
-.fitExtent([[0, 0],[width , height]], extents[0])
+.fitExtent([[0, 0],[width , height-margin.bottom]], extents[0])
 
 const path = d3.geoPath().projection(projection)
 
@@ -65,11 +67,14 @@ let scaleArrow = d3.scaleLinear()
 let lengthPoints = [];
 
 //================KEY==========================================
-divAll
+let keyDesktop = divAll
 .append('div')
 .attr('class', 'arrows-key')
 .html(
-`	<svg viewBox="0 0 120px 34.9px">
+`	<div class="arrow-text-intro">
+		<text>Bigger arrows indicate bigger swing</text>
+	</div>
+	<svg viewBox="0 0 120px 34.9px">
 		<g>
 			<polygon class="arrow-poly D" points="4.2,12.2 6.3,8.6 60,34.9 9.1,3.6 11.2,0 0,1.6"/>
 			<polygon class="arrow-poly R" points="130,1.6 118.8,0 120.9,3.6 70,34.9 123.7,8.6 125.8,12.2"/>
@@ -77,10 +82,29 @@ divAll
 	</svg>
 
 	<div class="arrows-key-wrapper">
-		<span>Democrat swing</span>
-		<span>Republican swing</span>
+		<span class="arrow-text D">Democrat swing</span>
+		<span class="arrow-text R">Republican swing</span>
 	</div>
 
+`
+)
+
+let keyMobile = divAll
+.append('div')
+.attr('class', 'arrows-key-mobile')
+.html(
+`	<svg viewBox="0 0 120px 24px">
+		<g>
+			<polygon class="arrow-poly D" points="110,1.6 105.9,0.4 107.1,2.6 70.3,23.1 70.7,23.9 107.6,3.5 108.8,5.7 "/>
+			<polygon class="arrow-poly R" points="59.7,23.1 22.9,2.6 24.1,0.4 20,1.6 21.2,5.7 22.4,3.5 59.3,23.9 	"/>
+		</g>
+
+	</svg>
+
+	<div class="arrows-key-wrapper">
+		<span class="arrow-text D">Democrat swing</span>
+		<span class="arrow-text R">Republican swing</span>
+	</div>
 `
 )
 
@@ -102,14 +126,15 @@ svgMap
 
 const countiesmap = svgMap.append('g')
 
-//================SVG ANNOTATIONS======================================
+//================SVG LABELS======================================
 
-let svgAnnotations = divAnnotations
+let svgLabels = divAnnotations
 .append('svg')
 .attr('width', width)
 .attr('height', height)
 .attr('class', 'svg-annotations')
-.append('g')
+
+svgLabels
 .selectAll('label')
 .data(Object.entries(labels))
 .enter()
@@ -118,14 +143,13 @@ let svgAnnotations = divAnnotations
 .attr('transform', d => `translate(${projection(d[1].coords)})`)
 .attr('class', 'map-label')
 
-
 //================DRAW ARROWS======================================
 
 const makeArrow = (context, centroid, scale, rotation, color) => {
 
 	let orientation = rotation > 5 ? 330 * Math.PI / 180 : 210 * Math.PI / 180;
 
-	let arrowLength = isMobile ? 150 : 300;
+	let arrowLength = isMobile ? 90 : 300;
 
 	const arrow = 
 	isMobile
@@ -140,13 +164,10 @@ const makeArrow = (context, centroid, scale, rotation, color) => {
 	:
 	`${(Math.cos(orientation) * arrowLength * scale) + 9.3},${(Math.sin(orientation) * arrowLength * scale) - 2.5} ${Math.cos(orientation) * arrowLength * scale},${Math.sin(orientation) * arrowLength * scale} ${(Math.cos(orientation) * arrowLength * scale) + 2.5},${(Math.sin(orientation) * arrowLength * scale) + 9.3}`
 
-
 	let points = arrow.split(' ')
 	let pointsHead = arrowHead.split(' ')
 
-	isMobile
-	? context.setTransform(1, 0, 0, 1, centroid[0], centroid[1])
-	: context.setTransform(scale, 0, 0, scale, centroid[0], centroid[1]);
+	context.setTransform(scale, 0, 0, scale, centroid[0], centroid[1]);
 
 	context.rotate(`${isMobile ? 0 : rotation}`)
 
@@ -196,7 +217,7 @@ annotations.sheets.annotations.map((annotation,i) => {
 	{
 
 		projection
-		.fitExtent([[-10, -10],[width * 2 + 10, height *2 + 10]], extents[i])
+		.fitExtent([[-10, -10],[width * 2, (height-margin.bottom) * 2]], extents[i])
 
 		let stateData = annotation.id === 'US' ? data : data.filter(d => d.id.substr(0,2) === annotation.id);
 
@@ -273,12 +294,12 @@ annotations.sheets.annotations.map((annotation,i) => {
 			d3.selectAll('.canvas-arrows')
 			.classed('canvas-visible', false)
 
-			svgAnnotations.attr('opacity', 0)
+			svgLabels.attr('opacity', 0)
 
 			let counties = countiesFeature.features.filter(d => d.id.substr(0,2) === annotation.id);
 
 			projection
-			.fitExtent([[0, 0],[width, height]], extents[i])
+			.fitExtent([[0, 0],[width, height-margin.bottom]], extents[i])
 
 			let transition = svgMap.selectAll("path")
 			.transition()
@@ -296,7 +317,7 @@ annotations.sheets.annotations.map((annotation,i) => {
 				d3.select('#canvas-' + annotation.area.replace(/[_()-\s%$,]/g, ""))
 				.classed('canvas-visible', true)
 
-				i == 0 ? svgAnnotations.attr('opacity', 1) : svgAnnotations.attr('opacity', 0)
+				i == 0 ? svgLabels.attr('opacity', 1) : svgLabels.attr('opacity', 0)
 
 				countiesmap
 				.selectAll('path')
@@ -310,6 +331,9 @@ annotations.sheets.annotations.map((annotation,i) => {
 				.attr('d', path)
 				.attr('class', `elex-county`)
 
+				//makeLabels(cities[annotation.abbr].filter(d => isMobile ? d.capital == true : d))
+
+
 			}
 		}})
 	}
@@ -322,6 +346,38 @@ scrolly.watchScroll();
 svgMap.on('click', d => {
 	console.log(projection.invert([d.clientX, d.clientY]))
 })
+
+const makeLabels = (labels) => {
+
+	svgLabels.selectAll('label')
+	.data(labels)
+	.enter()
+	.append('text')
+	.text(d => d.name)
+	.attr('class', d => `city-label-white ${d.capital ? 'capital' : 'city'}`)
+	.style('text-anchor', d => projection([d.lng,d.lat])[0] > width / 2 ? 'end' : 'start')
+	.attr('transform', d => `translate(${projection([d.lng,d.lat])})`)
+	.attr("dx", d => projection([d.lng,d.lat])[0] > width / 2 ? "-0.5em" :  "0.5em")
+
+	svgLabels.selectAll('label')
+	.data(labels)
+	.enter()
+	.append('text')
+	.text(d => d.name)
+	.attr('class', d => `city-label ${d.capital ? 'capital' : 'city'}`)
+	.style('text-anchor', d => projection([d.lng,d.lat])[0] > width / 2 ? 'end' : 'start')
+	.attr('transform', d => `translate(${projection([d.lng,d.lat])})`)
+	.attr("dx", d => projection([d.lng,d.lat])[0] > width / 2 ? "-0.5em" :  "0.5em")
+
+	svgLabels.selectAll('label')
+	.data(labels)
+	.enter()
+	.append('circle')
+	.attr('class', 'city-label-circle')
+	.attr('r', 3)
+	.attr('cx', d => projection([d.lng,d.lat])[0])
+	.attr('cy', d => projection([d.lng,d.lat])[1])
+}
 
 
 

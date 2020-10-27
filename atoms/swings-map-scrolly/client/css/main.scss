@@ -17,7 +17,7 @@
     @include mq($from: 100px, $until: 499px) {
     	margin-left: 0;
     	z-index: -1;
-    	margin-top:calc(100% + 20px);
+    	margin-top:calc(100% + 40px);
     }
 }
 
@@ -128,8 +128,12 @@
 	font-family: 'Guardian Text Sans Web', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
 	font-weight: 400;
 	font-size: 14px;
-	text-align: center;
+	text-anchor: middle;
 	fill:#333;
+
+	@include mq($from: 100px, $until: 620px){
+		font-size: 12px;
+	}
 }
 
 .map-container.all
@@ -223,22 +227,34 @@
 	width: 100%;
 	display: flex;
 
-	font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
-	font-size: 13px;
-	line-height: 15px;
+    font-size: 13px;
+    font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    font-weight: 900;
+
 
 	span{
 		width: 60px;
 		display: block;
 		margin-right: 8px;
+		color:#c70000;
 	}
 
 	span:nth-of-type(1)
 	{
 		text-align: right;
+		color:#25428F;
+		
 	}
+}
+.arrow-text-intro{
+	max-width: 120px;
 
-
+	text{
+		font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+		font-size: 12px;
+		color: #333;
+	}
+	
 }
 
 .arrows-key{
@@ -248,6 +264,23 @@
 	svg{
 		height: 35px;
 	}
+	display: block;
+	@include mq($from: 100px, $until: 499px) {
+    	display: none;
+    }
+}
+
+.arrows-key-mobile{
+	position: absolute;
+	bottom:10px;
+	left:0;
+	svg{
+		height: 25px;
+	}
+	display: none;
+	@include mq($from: 100px, $until: 499px) {
+    	display: block;
+    }
 }
 
 canvas{
