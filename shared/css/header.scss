@@ -1,0 +1,275 @@
+// Election specific //
+$biden-blue: #25428F;
+$neutral-replacement: #dbd8ce;
+
+.content--interactive .social-icon {
+  border: 1px solid $biden-blue;
+}
+
+.content--interactive .social-icon:hover {
+  background-color: $biden-blue;
+  border: 1px solid $biden-blue;
+}
+
+.element-atom,
+.interactive-atom {
+  margin: 0 !important;
+
+}
+
+.content--interactive {
+    background-color: #fbf6ef;
+}
+
+.content--interactive:not(.paid-content) .element-interactive {
+  background-color: #fbf6ef;
+}
+
+.content--interactive .content__headline,
+.headline {
+  &::before {
+    content: "";
+    display: block;
+    background-image: url("https://media.guim.co.uk/aaaafef5f200820a103415e61d72765547d27beb/0_0_4000_2400/2000.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left 0px bottom 0px;
+    height: 58vw;
+    margin-left: 0px;
+    @include mq(tablet) {
+      border-top: 0;
+      margin-left: -20px;
+
+    }
+
+    @include mq(desktop) {
+      width: 940px;
+      height: 372px;
+    }
+    @include mq(leftCol) {
+      width: 950px;
+      padding-bottom: 10px;
+      margin-left: -10px;
+      // padding-top: 10px;
+      background-position: left 0px bottom 0px;
+    }
+    @include mq(wide) {
+      width: 1030px;
+    }
+  }
+  &::after {
+    content: "";
+    width: calc(100% + 20px);
+    background-color: $neutral-replacement;
+    position: absolute;
+    height: 1px;
+    top: calc(58vw);
+    left: -10px;
+
+    @include mq(mobileLandscape) {
+      left: -20px;
+      width: calc(100% + 40px);
+    }
+
+    @include mq(tablet) {
+
+    }
+    @include mq(desktop) {
+      width: 980px;
+         top: 372px;
+    }
+    @include mq(leftCol) {
+      left: -10px;
+      width: 970px;
+      top: 392px;
+    }
+    @include mq(wide) {
+      width: 1050px;
+    }
+  }
+}
+
+.content--interactive .content__main-column .content__headline {
+  @include fs-titlepiece(1);
+  font-size: 36px;
+  position: relative;
+  padding-top: 0;
+  @include mq(mobileMedium) {
+    @include fs-titlepiece(1);
+  }
+
+  @include mq(tablet) {
+    @include fs-titlepiece(2);
+
+  }
+  @include mq(leftCol) {
+    padding-top: 10px;
+  }
+}
+
+.content__standfirst,
+.standfirst, .content--interactive .content__standfirst {
+  @include fs-headline(1);
+  font-weight: 200;
+  margin-top: 24px;
+  max-width: 90%;
+  margin-bottom: 48px;
+
+  @include mq(mobileMedium) {
+    @include fs-headline(2);
+    font-weight: 200;
+  }
+  @include mq(mobileLandscape) {
+    max-width: 80%;
+  }
+  @include mq(tablet) {
+    max-width: 540px;
+  }
+}
+
+.u-cf {
+  .content__meta-container,
+  .meta__extras {
+    margin-left: -10px;
+    margin-right: -10px;
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    @include mq(mobileLandscape) {
+      margin-right: -20px;
+      margin-left: -20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    @include mq(desktop) {
+      margin-right: -20px;
+      margin-left: -20px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    @include mq(leftCol) {
+      margin-left: -10px;
+      margin-right: -10px;
+      padding-left: 10px;
+      padding-right: 0px;
+    }
+  }
+  .meta__extras {
+    @include mq(desktop) {
+      margin-left: -10px;
+    }
+  }
+}
+
+.meta__numbers {
+  @include mq(desktop) {
+    margin-right: calc(960px - 620px);
+  }
+}
+
+.content__meta-container {
+  @include mq(desktop) {
+    width: 960px !important;
+  }
+  @include mq(wide) {
+    width: 1040px !important;
+  }
+}
+
+.l-side-margins::before,
+.l-side-margins::after {
+  z-index: 9999;
+}
+
+.content__main,
+.content__head {
+  position: relative;
+  &:before {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    min-height: 500px;
+    content: " ";
+    border-left: 1px solid $neutral-replacement;
+    z-index: 10;
+
+    @include mq(leftCol) {
+      left: calc((100% - 1140px) / 2 + 170px);
+    }
+
+    @include mq(wide) {
+      left: calc((100% - 1300px) / 2 + 250px);
+    }
+  }
+
+  .byline {
+    border-top: none !important;
+    margin-top: 5px;
+  }
+}
+
+a,
+.u-fauxlink {
+  color: $news-main;
+  cursor: pointer;
+  text-decoration: none;
+}
+.tonal--tone-news .tone-colour {
+  color: $news-main;
+}
+
+.content__meta-container {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    $neutral-replacement,
+    $neutral-replacement 0.0625rem,
+    transparent 0.0625rem,
+    transparent 0.25rem
+  );
+  background-repeat: repeat-x;
+  background-position: top;
+  -webkit-background-size: 0.0625rem 0.8125rem;
+  background-size: 0.0625rem 0.8125rem;
+  padding-top: 12px;
+  border-top: none;
+}
+
+.ios,
+.android {
+  .article__header .headline {
+    padding: 4px 12px 30px 12px;
+  }
+  .headline {
+    @include fs-headline(5);
+    font-weight: 700;
+
+    @include mq(mobileMedium) {
+      @include fs-headline(6);
+      font-weight: 700;
+    }
+  }
+  .headline:after {
+    top: calc(44vw + 10px);
+    width: calc(100% + 10px);
+  }
+  .standfirst {
+    @include fs-headline(1);
+    font-weight: 200;
+    margin-bottom: 20px;
+    margin-top: 0px;
+  }
+  .byline {
+      a {
+      @include fs-header(1);
+      font-size: 17px;
+      font-weight: 700;
+    }
+  }
+  h2 {
+    @include fs-header(1);
+    font-weight: 700;
+    margin-top: 36px;
+    margin-bottom: 6px;
+  }
+}
