@@ -46,7 +46,7 @@ let extents = [
             [-119,24]//[minLon, minLat]
         ]
 },
-{type: "LineString",id:"42",name:"Pennsylvania",coordinates:[[-81,39.71976617],[-73,39.71976617],[-73,42.51468907],[-81,42.51468907]]},
+{type: "LineString",id:"42",name:"Pennsylvania",coordinates:[[-81,38.1],[-73,38.1],[-73,42.51468907],[-81,42.51468907]]},
 {type: "LineString",id:"26",name:"Michigan",coordinates:[[-90.41862022,41.69604543],[-82.12280564,41.69604543],[-82.12280564,48.30606297],[-90.41862022,48.30606297]]},
 {type: "LineString",id:"39",name:"Ohio",coordinates:[[-84.82033611,38.40314185],[-80.518991,38.40314185],[-80.518991,42.32323642],[-84.82033611,42.32323642]]},
 {type: "LineString",id:"37",name:"North Carolina",coordinates:[[-84.32186902,33.75287798],[-75.40011906,33.75287798],[-75.40011906,36.58803627],[-84.32186902,36.58803627]]},
@@ -69,12 +69,19 @@ divAll
 .append('div')
 .attr('class', 'arrows-key')
 .html(
-`<svg viewBox="0 0 120px 34.9px">
-	<g>
-		<polygon class="arrow-poly D" points="4.2,12.2 6.3,8.6 60,34.9 9.1,3.6 11.2,0 0,1.6"/>
-		<polygon class="arrow-poly R" points="120,1.6 108.8,0 110.9,3.6 60,34.9 113.7,8.6 115.8,12.2"/>
-	</g>
-</svg>`
+`	<svg viewBox="0 0 120px 34.9px">
+		<g>
+			<polygon class="arrow-poly D" points="4.2,12.2 6.3,8.6 60,34.9 9.1,3.6 11.2,0 0,1.6"/>
+			<polygon class="arrow-poly R" points="130,1.6 118.8,0 120.9,3.6 70,34.9 123.7,8.6 125.8,12.2"/>
+		</g>
+	</svg>
+
+	<div class="arrows-key-wrapper">
+		<span>Democrat swing</span>
+		<span>Republican swing</span>
+	</div>
+
+`
 )
 
 //================SVG MAP======================================
