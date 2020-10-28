@@ -3,7 +3,6 @@ import data from 'shared/js/data-parser.js'
 import demographics from 'assets/json/demographics.json'
 import Dodge from 'shared/js/Dodge.js'
 
-
 data.map(d => {
 
 	let match = demographics.find(f => f.county_fip_id === +d.id)
@@ -50,8 +49,6 @@ let agesVariables = [
 'Over 45 years old'
 ]
 
-
-	
 let isMobile = window.matchMedia('(max-width: 700px)').matches;
 
 const atomEl = d3.select('.interactive-wrapper-bees-age').node();
@@ -135,7 +132,7 @@ const makeChart = (svg, dodge, max, className) => {
 
 agesVariables.map(v => {
 
-	let datum = data.filter(d => d.age_bucket === v);
+	let datum = data.filter(d => d.age_bucket === v && d.swing != null);
 
 	let dodge = new Dodge(datum, xScale, radius, padding);
 
@@ -182,7 +179,7 @@ agesVariables.map(v => {
 	.call(
 	    d3.axisBottom(xScale)
 	    .tickFormat(d => Math.abs(d))
-	    .ticks(3)
+	    .ticks(4)
 	)
 	.attr('transform', 'translate(0,0)')
 
@@ -200,7 +197,13 @@ agesVariables.map(v => {
 
 	let zeroText = texts.nodes().find(t => t.innerHTML == '0');
 
-	texts.nodes().map(n => n.innerHTML ='50pp')
+	texts.nodes().map((n,i) => {
+		if(i == 0)
+		{
+			n.innerHTML = n.innerHTML + 'pp';
+		}
+		
+	})
 
 	zeroText.innerHTML = 'No swing';
 	zeroText.setAttribute("style", "fill:#333;");

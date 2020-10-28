@@ -1,3 +1,11 @@
+.content--interactive {
+    background-color: #fbf6ef;
+
+    svg{
+        background: transparent;
+    }
+}
+
 .bees-standfirst{
     font-style: normal;
     padding: 0 0 12px 0;
@@ -12,13 +20,10 @@
 .interactive-atom {
     margin: 0;
     padding: 0;
-    background: white;
-
-    border-bottom: 1px solid #bababa;
+    background: transparent;
 }
 
-.interactive-wrapper-bees{
-	border-top: 1px solid #dcdcdc;
+.interactive-wrapper-bees-age, .interactive-wrapper-bees-education, .interactive-wrapper-bees-income, .interactive-wrapper-bees-race, .interactive-wrapper-bees-urban-rural{
 	border-bottom: 1px solid #dcdcdc;
 }
 
@@ -79,7 +84,7 @@
         max-width: 200px;
 
          @include mq($from: 100px, $until: 620px){
-            max-width: 100px;
+            max-width: 80px;
          }
         
     }

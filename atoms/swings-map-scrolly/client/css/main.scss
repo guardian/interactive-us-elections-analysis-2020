@@ -5,6 +5,22 @@
 @import "enhancer";
 
 
+.content--interactive {
+	background-color: #fbf6ef;
+
+	svg{
+		background: #fbf6ef;
+	}
+}
+
+.svg-annotations{
+	background: transparent !important;
+}
+
+.element.element-atom{
+	background-color: #fbf6ef;
+}
+
 
 .scroll-inner svg {
 	overflow: hidden;
@@ -14,53 +30,62 @@
 
 	margin-left: 55%;
 
-    @include mq($from: 100px, $until: 499px) {
-    	margin-left: 0;
-    	z-index: -1;
-    	margin-top:calc(100% + 40px);
-    }
+	@include mq($from: 100px, $until: 499px) {
+		margin-left: 0;
+		z-index: -1;
+		margin-top:calc(100% + 40px);
+	}
 }
 
 .scroll-text__div {
-    width: calc(100% - 22px);
-    max-width: 420px;
-    
-    @include mq(desktop) {
-        width: 420px;
-    }
-    margin-left: 0px;
-    background-color: #fff;
-    border: 1px solid #bababa;
-    padding: 6px 10px 0px;
+	padding: 6px 4px 6px 8px !important;
+	width: calc(100% - 22px);
+	max-width: 420px;
 
-    font-family: 'Guardian Text Egyptian Web', Georgia, serif;
-    font-size: 16px;
-    line-height: 26px;
-    padding-top: 4px;
-    padding-bottom: 0px;
+	@include mq(desktop) {
+		width: 420px;
+	}
+	margin-left: 0px;
+	background-color: #fff;
+	border: 1px solid #bababa;
+	padding: 6px 10px 0px;
+
+	font-size: 17px;
+	line-height: 24px;
+	font-family: "Guardian Text Egyptian Web",Georgia,serif;
+	color: #121212;
 
 }
 
 .blob-headline{
-	 font-family: 'Guardian Headline', 'Guardian Egyptian Web', 'Guardian Headline Full', Georgia, serif;
-	 font-weight: bold;
-	 font-size: 20px;
+	display: inline-block;
+	width:100%;
+	font-size: 22px;
+	line-height: 120%;
+	font-family: "Guardian Headline","Guardian Egyptian Web","Guardian Headline Full",Georgia,serif;
+	font-weight: 400;
+	font-weight: 700;
+	line-height: 1.2;
 }
 
 
 .interactive-atom {
-    margin: 0;
-    padding: 0;
-    background: white;
+	margin: 0;
+	padding: 0;
+	background: #fbf6ef !important;
+}
+
+.div-svg-map {
+    background: #fbf6ef !important;
 }
 
 .interactive-wrapper{
- 	display: flex;
+	display: flex;
 	flex-direction: column;
 
 	@include mq($from: 100px, $until: 499px) {
-    	border-bottom: 1px solid #dcdcdc;
-    }
+		border-bottom: 1px solid #dcdcdc;
+	}
 }
 
 .map-container{
@@ -89,6 +114,7 @@
 	&.swing{
 		stroke-width:2px;
 		stroke:#333;
+		stroke-alignment:inner;
 	}
 }
 
@@ -139,11 +165,11 @@
 .map-container.all
 {
 	@include mq($from: 100px, $until: 620px){
-	    position: relative;
-	    z-index: 1;
-	    background: #fff;
-	    margin: 0 auto;
-  	}
+		position: relative;
+		z-index: 1;
+		background: #fff;
+		margin: 0 auto;
+	}
 }
 
 
@@ -156,34 +182,33 @@
 
 .city-label, .city-label-white {
 	fill:#333;
-    font-size: 14px;
-    line-height: 115%;
-    font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
-    pointer-events: none;
+	font-size: 14px;
+	line-height: 115%;
+	font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+	pointer-events: none;
 
-    &.capital{
+	&.capital{
 		font-weight: 700;
-    }
+	}
 
-    &.city{
+	&.city{
 		font-weight: 300;
-    }
+	}
 }
 
 .city-label-white{
 	stroke: #fff;
-    stroke-width: 5;
-    stroke-linejoin: round;
-    stroke-opacity: 1;
-    fill: none;
-    mix-blend-mode: soft-light;
+	stroke-width: 2;
+	stroke-linejoin: round;
+	stroke-opacity: .7;
+	fill: none;
 }
 
 .city-label-circle{
 	fill: #121212;
 	stroke:#fff;
 	stroke-width:1px;
-    pointer-events: none;
+	pointer-events: none;
 }
 
 
@@ -197,12 +222,8 @@
 
 	height: 100vh;
 	@include mq($from: 100px, $until: 499px) {
-    	height: 100vh;
-    } 
-}
-
-.div-svg-map{
-	background: white;
+		height: 80vh;
+	} 
 }
 
 .canvas-arrows{
@@ -219,7 +240,7 @@
 
 .canvas-visible{
 	transition: opacity 0.3s;
-  	-webkit-transition: opacity 0.3s;
+	-webkit-transition: opacity 0.3s;
 	opacity: 1;
 }
 
@@ -227,47 +248,50 @@
 	width: 100%;
 	display: flex;
 
-    font-size: 13px;
-    font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
-    font-weight: 900;
+	font-size: 13px;
+	font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+	font-weight: 900;
 
 
 	span{
 		width: 60px;
 		display: block;
-		margin-right: 8px;
+		margin-right: 10px;
 		color:#c70000;
 	}
 
 	span:nth-of-type(1)
 	{
-		text-align: right;
 		color:#25428F;
-		
 	}
 }
 .arrow-text-intro{
-	max-width: 120px;
+	max-width: 160px;
+	font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+	line-height: 14px;
+	font-size: 12px;
+	color: #333;
+	margin-bottom: 6px;
 
-	text{
-		font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
-		font-size: 12px;
-		color: #333;
+	@include mq($from: 100px, $until: 499px) {
+		margin-top: 6px;
+		max-width: 100%;
 	}
-	
 }
 
 .arrows-key{
 	position: absolute;
-	bottom:10px;
+	top:0px;
 	left:0;
 	svg{
 		height: 35px;
+		background: transparent;
 	}
 	display: block;
 	@include mq($from: 100px, $until: 499px) {
-    	display: none;
-    }
+		display: none;
+		bottom:20px;
+	}
 }
 
 .arrows-key-mobile{
@@ -276,14 +300,55 @@
 	left:0;
 	svg{
 		height: 25px;
+		background: transparent;
 	}
 	display: none;
 	@include mq($from: 100px, $until: 499px) {
-    	display: block;
-    }
+		display: block;
+	}
 }
 
 canvas{
 	pointer-events: none;
+}
+
+
+.svg-map-choropleth{
+	fill:white;
+}
+
+.county-elex-D{
+	fill:#25428F;
+	stroke:#25428F;
+}
+
+.county-elex-R{
+	fill:#C70000;
+	stroke:#C70000;
+}
+.svg-map{
+	position: absolute;
+	left: 0;
+	top:0;
+	background: transparent !important;	
+}
+
+.black-state-annotation{
+	font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+	font-size: 14px;
+	color: #333;
+	font-weight: 900;
+}
+
+.arc-stroke{
+	fill: none;
+	stroke:#333;
+	stroke-width:1px;
+}
+
+.blob-arrow-svg{
+	background: transparent !important;
+	width: 30px;
+	height: 15px;
 }
 

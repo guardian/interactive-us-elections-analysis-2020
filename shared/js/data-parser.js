@@ -3,7 +3,7 @@ import data2020Raw from 'assets/json/latestraw.json'
 
 
 //FOR TESTING ONLY
-//import data2020Raw from 'assets/json/complete.json'
+//import data2020Raw from 'assets/json/mid_way.json'
 
 //=====================DATA PARSING=====================
 /*
@@ -79,7 +79,11 @@ data2020.map(d => {
 				data.push({
 				id:d[0],
 				name:d[1].name,
-				swing: swing
+				swing: swing,
+				RVotes:RVotes,
+				DVotes:DVotes,
+				RShare:RShare,
+				DShare:DShare
 				})
 			}
 			else
@@ -87,7 +91,11 @@ data2020.map(d => {
 				data.push({
 				id:d[0],
 				name:d[1].name,
-				swing: null
+				swing: null,
+				RVotes:null,
+				DVotes:null,
+				RShare:null,
+				DShare:null
 				})
 			}
 			

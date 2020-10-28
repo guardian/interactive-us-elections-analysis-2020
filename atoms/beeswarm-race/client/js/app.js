@@ -133,7 +133,7 @@ const makeChart = (svg, dodge, max, className) => {
 
 racesVariables.map(v => {
 
-	let datum = data.filter(d => d.race_bucket === v);
+	let datum = data.filter(d => d.race_bucket === v && d.swing != null);
 
 	console.log('===',data)
 
@@ -183,7 +183,7 @@ racesVariables.map(v => {
 	.call(
 	    d3.axisBottom(xScale)
 	    .tickFormat(d => Math.abs(d))
-	    .ticks(3)
+	    .ticks(4)
 	)
 	.attr('transform', 'translate(0,0)')
 
@@ -201,7 +201,13 @@ racesVariables.map(v => {
 
 	let zeroText = texts.nodes().find(t => t.innerHTML == '0');
 
-	texts.nodes().map(n => n.innerHTML ='50pp')
+	texts.nodes().map((n,i) => {
+		if(i == 0)
+		{
+			n.innerHTML = n.innerHTML + 'pp';
+		}
+		
+	})
 
 	zeroText.innerHTML = 'No swing';
 	zeroText.setAttribute("style", "fill:#333;");

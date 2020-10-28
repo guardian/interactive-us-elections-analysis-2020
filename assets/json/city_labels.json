@@ -3,6 +3,7 @@
     {
       "name": "Albany",
       "capital": true,
+      "coords":[-73.799,42.666],
       "lat": 42.666,
       "lng": -73.799,
       "ta": "end"
@@ -10,12 +11,14 @@
     {
       "name": "New York",
       "capital": false,
+      "coords":[-73.924,40.69],
       "lat": 40.694,
       "lng": -73.925
     },
     {
       "name": "Buffalo",
       "capital": false,
+      "coords":[-78.849,42.902],
       "lat": 42.902,
       "lng": -78.849,
       "ta": "start"
@@ -25,12 +28,14 @@
     {
       "name": "Sacramento",
       "capital": true,
+      "coords":[-121.46,38.567],
       "lat": 38.567,
       "lng": -121.468
     },
     {
       "name": "Los Angeles",
       "capital": false,
+      "coords":[-118.407,34.114],
       "lat": 34.114,
       "lng": -118.407,
       "ta": "end"
@@ -38,6 +43,7 @@
     {
       "name": "San Francisco",
       "capital": false,
+      "coords":[-122.443,37.756],
       "lat": 37.756,
       "lng": -122.443,
       "ta": "end"
@@ -45,6 +51,7 @@
     {
       "name": "San Diego",
       "capital": false,
+      "coords":[-117.122,32.831],
       "lat": 32.831,
       "lng": -117.122,
       "ta": "end"
@@ -54,18 +61,21 @@
     {
       "name": "Springfield",
       "capital": true,
+      "coords":[-89.651,39.77],
       "lat": 39.771,
       "lng": -89.654
     },
     {
       "name": "Chicago",
       "capital": false,
+      "coords":[-87.687,41.83],
       "lat": 41.837,
       "lng": -87.686
     },
     {
       "name": "Rockford",
       "capital": false,
+      "coords":[-89.06,42.26],
       "lat": 42.26,
       "lng": -89.064
     }
@@ -74,6 +84,7 @@
     {
       "name": "Tallahassee",
       "capital": true,
+      "coords":[-84.253,30.455],
       "lat": 30.455,
       "lng": -84.253,
       "ta": "start"
@@ -81,6 +92,7 @@
     {
       "name": "Miami",
       "capital": false,
+      "coords":[-80.214,25.78],
       "lat": 25.784,
       "lng": -80.21,
       "ta": "end"
@@ -88,6 +100,7 @@
     {
       "name": "Tampa",
       "capital": false,
+      "coords":[-82.445,27.994],
       "lat": 27.994,
       "lng": -82.445,
       "ta": "start"
@@ -97,24 +110,28 @@
     {
       "name": "Austin",
       "capital": true,
+      "coords":[-97.75,30.3],
       "lat": 30.3,
       "lng": -97.752
     },
     {
       "name": "Dallas",
       "capital": false,
+      "coords":[-96.764,32.79],
       "lat": 32.794,
       "lng": -96.766
     },
     {
       "name": "Houston",
       "capital": false,
+      "coords":[-95.386,29.78],
       "lat": 29.786,
       "lng": -95.389
     },
     {
       "name": "San Antonio",
       "capital": false,
+      "coords":[-98.525,29.466],
       "lat": 29.466,
       "lng": -98.525,
       "ta": "end"
@@ -124,12 +141,14 @@
     {
       "name": "Harrisburg",
       "capital": true,
+      "coords":[-76.885,40.27],
       "lat": 40.275,
       "lng": -76.884
     },
     {
       "name": "Philadelphia",
       "capital": false,
+      "coords":[-75.134,40.008],
       "lat": 40.008,
       "lng": -75.134,
       "ta": "end"
@@ -137,6 +156,7 @@
     {
       "name": "Pittsburgh",
       "capital": false,
+      "coords":[-79.97,40.44],
       "lat": 40.44,
       "lng": -79.976
     }
@@ -145,12 +165,14 @@
     {
       "name": "Atlanta",
       "capital": true,
+      "coords":[-84.423,33.76],
       "lat": 33.763,
       "lng": -84.422
     },
     {
       "name": "Augusta",
       "capital": false,
+      "coords":[-82.071,33.365],
       "lat": 33.365,
       "lng": -82.071,
       "ta": "end"
@@ -160,6 +182,7 @@
     {
       "name": "Boston",
       "capital": true,
+      "coords":[-71.085,42.319],
       "lat": 42.319,
       "lng": -71.085,
       "ta": "end"
@@ -167,6 +190,7 @@
     {
       "name": "Springfield",
       "capital": false,
+      "coords":[-72.536,42.11],
       "lat": 42.116,
       "lng": -72.539
     }
@@ -175,12 +199,14 @@
     {
       "name": "Phoenix",
       "capital": true,
+      "coords":[-112.08,33.572],
       "lat": 33.572,
       "lng": -112.089
     },
     {
       "name": "Tucson",
       "capital": false,
+      "coords":[-110.87,32.155],
       "lat": 32.155,
       "lng": -110.878
     }
@@ -189,6 +215,7 @@
     {
       "name": "Olympia",
       "capital": true,
+      "coords":[-122.896,47.042],
       "lat": 47.042,
       "lng": -122.896,
       "ta": "start"
@@ -196,6 +223,7 @@
     {
       "name": "Seattle",
       "capital": false,
+      "coords":[-122.324,47.621],
       "lat": 47.621,
       "lng": -122.324,
       "ta": "start"
@@ -203,6 +231,7 @@
     {
       "name": "Spokane",
       "capital": false,
+      "coords":[-117.43,47.667],
       "lat": 47.667,
       "lng": -117.433
     }
@@ -211,12 +240,14 @@
     {
       "name": "Lansing",
       "capital": true,
+      "coords":[-84.514,42.7],
       "lat": 42.714,
       "lng": -84.56
     },
     {
       "name": "Detroit",
       "capital": false,
+      "coords":[-83.102,42.383],
       "lat": 42.383,
       "lng": -83.102,
       "ta": "start"
@@ -224,6 +255,7 @@
     {
       "name": "Grand Rapids",
       "capital": false,
+      "coords":[-85.652,42.96],
       "lat": 42.962,
       "lng": -85.656
     }
@@ -232,12 +264,14 @@
     {
       "name": "Denver",
       "capital": true,
+      "coords":[-104.87,39.762],
       "lat": 39.762,
       "lng": -104.876
     },
     {
       "name": "Colorado Springs",
       "capital": false,
+      "coords":[-104.76,38.867],
       "lat": 38.867,
       "lng": -104.761
     }
@@ -246,12 +280,14 @@
     {
       "name": "Annapolis",
       "capital": true,
+      "coords":[-76.501,38.97],
       "lat": 38.971,
       "lng": -76.505
     },
     {
       "name": "Baltimore",
       "capital": false,
+      "coords":[-76.614,39.305],
       "lat": 39.305,
       "lng": -76.614,
       "ta": "start"
@@ -259,6 +295,7 @@
     {
       "name": "Hagerstown",
       "capital": false,
+      "coords":[-77.722,39.64],
       "lat": 39.64,
       "lng": -77.722,
       "ta": "start"
@@ -268,6 +305,7 @@
     {
       "name": "Carson City",
       "capital": true,
+      "coords":[-119.747,39.151],
       "lat": 39.151,
       "lng": -119.747,
       "ta": "start"
@@ -275,12 +313,14 @@
     {
       "name": "Las Vegas",
       "capital": false,
+      "coords":[-115.26,36.233],
       "lat": 36.233,
       "lng": -115.265
     },
     {
       "name": "Reno",
       "capital": false,
+      "coords":[-119.848,39.55],
       "lat": 39.55,
       "lng": -119.848,
       "ta": "start"
@@ -290,18 +330,21 @@
     {
       "name": "Salem",
       "capital": true,
+      "coords":[-123.02,44.923],
       "lat": 44.923,
       "lng": -123.025
     },
     {
       "name": "Portland",
       "capital": false,
+      "coords":[-122.67,45.53],
       "lat": 45.537,
       "lng": -122.65
     },
     {
       "name": "Eugene",
       "capital": false,
+      "coords":[-123.11,44.056],
       "lat": 44.056,
       "lng": -123.117
     }
@@ -310,6 +353,7 @@
     {
       "name": "Jefferson City",
       "capital": true,
+      "coords":[-92.176,38.568],
       "lat": 38.568,
       "lng": -92.176,
       "ta": "end"
@@ -317,6 +361,7 @@
     {
       "name": "St. Louis",
       "capital": false,
+      "coords":[-90.245,38.636],
       "lat": 38.636,
       "lng": -90.245,
       "ta": "end"
@@ -324,6 +369,7 @@
     {
       "name": "Kansas City",
       "capital": false,
+      "coords":[-94.554,39.124],
       "lat": 39.124,
       "lng": -94.554,
       "ta": "start"
@@ -333,18 +379,21 @@
     {
       "name": "Columbus",
       "capital": true,
+      "coords":[-82.986,39.98],
       "lat": 39.986,
       "lng": -82.985
     },
     {
       "name": "Cleveland",
       "capital": false,
+      "coords":[-81.677,41.4],
       "lat": 41.477,
       "lng": -81.68
     },
     {
       "name": "Cincinnati",
       "capital": false,
+      "coords":[-84.506,39.141],
       "lat": 39.141,
       "lng": -84.506,
       "ta": "start"
@@ -354,12 +403,14 @@
     {
       "name": "Indianapolis",
       "capital": true,
+      "coords":[-86.147,39.77],
       "lat": 39.777,
       "lng": -86.146
     },
     {
       "name": "Fort Wayne",
       "capital": false,
+      "coords":[-85.144,41.089],
       "lat": 41.089,
       "lng": -85.144,
       "ta": "end"
@@ -369,12 +420,14 @@
     {
       "name": "Raleigh",
       "capital": true,
+      "coords":[-78.643,35.83],
       "lat": 35.833,
       "lng": -78.643
     },
     {
       "name": "Charlotte",
       "capital": false,
+      "coords":[-80.808,35.2],
       "lat": 35.208,
       "lng": -80.83
     }
@@ -383,12 +436,14 @@
     {
       "name": "Richmond",
       "capital": true,
+      "coords":[-77.47,37.53],
       "lat": 37.53,
       "lng": -77.476
     },
     {
       "name": "Virginia Beach",
       "capital": false,
+      "coords":[-76.043,36.734],
       "lat": 36.734,
       "lng": -76.043,
       "ta": "end"
@@ -398,6 +453,7 @@
     {
       "name": "Madison",
       "capital": true,
+      "coords":[-89.393,43.083],
       "lat": 43.083,
       "lng": -89.393,
       "ta": "end"
@@ -405,6 +461,7 @@
     {
       "name": "Milwaukee",
       "capital": false,
+      "coords":[-87.964,43.06],
       "lat": 43.064,
       "lng": -87.967
     }
@@ -413,12 +470,14 @@
     {
       "name": "Providence",
       "capital": true,
+      "coords":[-71.413,41.82],
       "lat": 41.823,
       "lng": -71.419
     },
     {
       "name": "Cranston",
       "capital": false,
+      "coords":[-71.486,41.766],
       "lat": 41.766,
       "lng": -71.486,
       "ta": "end"
@@ -428,6 +487,7 @@
     {
       "name": "Salt Lake City",
       "capital": true,
+      "coords":[-111.931,40.778],
       "lat": 40.778,
       "lng": -111.931,
       "ta": "end"
@@ -435,6 +495,7 @@
     {
       "name": "Ogden",
       "capital": false,
+      "coords":[-111.96,41.228],
       "lat": 41.228,
       "lng": -111.968
     }
@@ -443,12 +504,14 @@
     {
       "name": "Nashville",
       "capital": true,
+      "coords":[-86.782,36.17],
       "lat": 36.172,
       "lng": -86.784
     },
     {
       "name": "Memphis",
       "capital": false,
+      "coords":[-89.977,35.105],
       "lat": 35.105,
       "lng": -89.977,
       "ta": "start"
@@ -458,12 +521,14 @@
     {
       "name": "Baton Rouge",
       "capital": true,
+      "coords":[-91.132,30.44],
       "lat": 30.442,
       "lng": -91.131
     },
     {
       "name": "New Orleans",
       "capital": false,
+      "coords":[-89.929,30.069],
       "lat": 30.069,
       "lng": -89.929,
       "ta": "end"
@@ -473,12 +538,14 @@
     {
       "name": "Frankfort",
       "capital": true,
+      "coords":[-84.862,38.19],
       "lat": 38.192,
       "lng": -84.864
     },
     {
       "name": "Louisville",
       "capital": false,
+      "coords":[-85.648,38.166],
       "lat": 38.166,
       "lng": -85.648,
       "ta": "end"
@@ -486,6 +553,7 @@
     {
       "name": "Lexington",
       "capital": false,
+      "coords":[-84.459,38.042],
       "lat": 38.042,
       "lng": -84.459,
       "ta": "start"
@@ -495,12 +563,14 @@
     {
       "name": "Oklahoma City",
       "capital": true,
+      "coords":[-97.518,35.46],
       "lat": 35.468,
       "lng": -97.514
     },
     {
       "name": "Tulsa",
       "capital": false,
+      "coords":[-95.908,36.12],
       "lat": 36.128,
       "lng": -95.904
     }
@@ -509,12 +579,14 @@
     {
       "name": "Hartford",
       "capital": true,
+      "coords":[-72.686,41.76],
       "lat": 41.766,
       "lng": -72.683
     },
     {
       "name": "Bridgeport",
       "capital": false,
+      "coords":[-73.192,41.19],
       "lat": 41.192,
       "lng": -73.195
     }
@@ -523,6 +595,7 @@
     {
       "name": "Lincoln",
       "capital": true,
+      "coords":[-96.679,40.809],
       "lat": 40.809,
       "lng": -96.679,
       "ta": "end"
@@ -530,6 +603,7 @@
     {
       "name": "Omaha",
       "capital": false,
+      "coords":[-96.052,41.263],
       "lat": 41.263,
       "lng": -96.052,
       "ta": "end"
@@ -539,6 +613,7 @@
     {
       "name": "Honolulu",
       "capital": true,
+      "coords":[-157.846,21.329],
       "lat": 21.329,
       "lng": -157.846,
       "ta": "start"
@@ -546,6 +621,7 @@
     {
       "name": "Hilo",
       "capital": false,
+      "coords":[-155.08,19.689],
       "lat": 19.689,
       "lng": -155.086
     }
@@ -554,12 +630,14 @@
     {
       "name": "Santa Fe",
       "capital": true,
+      "coords":[-105.98,35.662],
       "lat": 35.662,
       "lng": -105.982
     },
     {
       "name": "Albuquerque",
       "capital": false,
+      "coords":[-106.646,35.105],
       "lat": 35.105,
       "lng": -106.646,
       "ta": "start"
@@ -567,6 +645,7 @@
     {
       "name": "Las Cruces",
       "capital": false,
+      "coords":[-106.78,32.327],
       "lat": 32.327,
       "lng": -106.789
     }
@@ -575,18 +654,21 @@
     {
       "name": "Montgomery",
       "capital": true,
+      "coords":[-86.267,32.34],
       "lat": 32.347,
       "lng": -86.267
     },
     {
       "name": "Birmingham",
       "capital": false,
+      "coords":[-86.798,33.52],
       "lat": 33.528,
       "lng": -86.799
     },
     {
       "name": "Huntsville",
       "capital": false,
+      "coords":[-86.649,34.69],
       "lat": 34.699,
       "lng": -86.641
     }
@@ -595,12 +677,14 @@
     {
       "name": "Columbia",
       "capital": true,
+      "coords":[-80.908,34.03],
       "lat": 34.038,
       "lng": -80.904
     },
     {
       "name": "Charleston",
       "capital": false,
+      "coords":[-79.965,32.81],
       "lat": 32.815,
       "lng": -79.963
     }
@@ -609,6 +693,7 @@
     {
       "name": "Topeka",
       "capital": true,
+      "coords":[-95.695,39.035],
       "lat": 39.035,
       "lng": -95.695,
       "ta": "end"
@@ -616,12 +701,14 @@
     {
       "name": "Wichita",
       "capital": false,
+      "coords":[-97.34,37.69],
       "lat": 37.69,
       "lng": -97.344
     },
     {
       "name": "Kansas City",
       "capital": false,
+      "coords":[-94.744,39.123],
       "lat": 39.123,
       "lng": -94.744,
       "ta": "end"
@@ -631,12 +718,14 @@
     {
       "name": "Des Moines",
       "capital": true,
+      "coords":[-93.673,41.5],
       "lat": 41.573,
       "lng": -93.61
     },
     {
       "name": "Davenport",
       "capital": false,
+      "coords":[-90.605,41.556],
       "lat": 41.556,
       "lng": -90.605,
       "ta": "end"
@@ -646,12 +735,14 @@
     {
       "name": "Little Rock",
       "capital": true,
+      "coords":[-92.356,34.72],
       "lat": 34.726,
       "lng": -92.358
     },
     {
       "name": "Fayetteville",
       "capital": false,
+      "coords":[-94.166,36.071],
       "lat": 36.071,
       "lng": -94.166,
       "ta": "start"
@@ -661,6 +752,7 @@
     {
       "name": "Boise",
       "capital": true,
+      "coords":[-116.231,43.601],
       "lat": 43.601,
       "lng": -116.231,
       "ta": "start"
@@ -668,6 +760,7 @@
     {
       "name": "Nampa",
       "capital": false,
+      "coords":[-116.56,43.585],
       "lat": 43.585,
       "lng": -116.563
     }
@@ -676,12 +769,14 @@
     {
       "name": "Jackson",
       "capital": true,
+      "coords":[-90.216,32.31],
       "lat": 32.316,
       "lng": -90.212
     },
     {
       "name": "Gulfport",
       "capital": false,
+      "coords":[-89.027,30.4],
       "lat": 30.427,
       "lng": -89.07
     }
@@ -690,12 +785,14 @@
     {
       "name": "Trenton",
       "capital": true,
+      "coords":[-74.764,40.22],
       "lat": 40.224,
       "lng": -74.764
     },
     {
       "name": "Newark",
       "capital": false,
+      "coords":[-74.175,40.72],
       "lat": 40.725,
       "lng": -74.172
     }
@@ -704,18 +801,21 @@
     {
       "name": "Juneau",
       "capital": true,
+      "coords":[-134.17,58.455],
       "lat": 58.455,
       "lng": -134.174
     },
     {
       "name": "Anchorage",
       "capital": false,
+      "coords":[-149.10,61.151],
       "lat": 61.151,
       "lng": -149.109
     },
     {
       "name": "Fairbanks",
       "capital": false,
+      "coords":[-147.65,64.835],
       "lat": 64.835,
       "lng": -147.653
     }
@@ -724,12 +824,14 @@
     {
       "name": "Concord",
       "capital": true,
+      "coords":[-71.551,43.23],
       "lat": 43.231,
       "lng": -71.559
     },
     {
       "name": "Nashua",
       "capital": false,
+      "coords":[-71.491,42.749],
       "lat": 42.749,
       "lng": -71.491,
       "ta": "end"
@@ -737,6 +839,7 @@
     {
       "name": "Manchester",
       "capital": false,
+      "coords":[-71.445,42.985],
       "lat": 42.985,
       "lng": -71.445,
       "ta": "start"
@@ -746,12 +849,14 @@
     {
       "name": "Bismarck",
       "capital": true,
+      "coords":[-100.76,46.814],
       "lat": 46.814,
       "lng": -100.769
     },
     {
       "name": "Fargo",
       "capital": false,
+      "coords":[-96.829,46.865],
       "lat": 46.865,
       "lng": -96.829,
       "ta": "end"
@@ -761,18 +866,21 @@
     {
       "name": "Augusta",
       "capital": true,
+      "coords":[-69.734,44.33],
       "lat": 44.334,
       "lng": -69.732
     },
     {
       "name": "Portland",
       "capital": false,
+      "coords":[-70.277,43.67],
       "lat": 43.677,
       "lng": -70.271
     },
     {
       "name": "Bangor",
       "capital": false,
+      "coords":[-68.792,44.83],
       "lat": 44.832,
       "lng": -68.791
     }
@@ -781,12 +889,14 @@
     {
       "name": "Pierre",
       "capital": true,
+      "coords":[-100.35,44.37],
       "lat": 44.375,
       "lng": -100.32
     },
     {
       "name": "Sioux Falls",
       "capital": false,
+      "coords":[-96.732,43.54],
       "lat": 43.54,
       "lng": -96.732,
       "ta": "end"
@@ -794,6 +904,7 @@
     {
       "name": "Rapid City",
       "capital": false,
+      "coords":[-103.22,44.07],
       "lat": 44.072,
       "lng": -103.22
     }
@@ -802,6 +913,7 @@
     {
       "name": "Charleston",
       "capital": true,
+      "coords":[-81.632,38.348],
       "lat": 38.348,
       "lng": -81.632,
       "ta": "start"
@@ -809,6 +921,7 @@
     {
       "name": "Huntington",
       "capital": false,
+      "coords":[-82.431,38.41],
       "lat": 38.411,
       "lng": -82.434
     }
@@ -817,18 +930,21 @@
     {
       "name": "Helena",
       "capital": true,
+      "coords":[-112.07,46.59],
       "lat": 46.597,
       "lng": -112.02
     },
     {
       "name": "Billings",
       "capital": false,
+      "coords":[-108.55,45.789],
       "lat": 45.789,
       "lng": -108.552
     },
     {
       "name": "Missoula",
       "capital": false,
+      "coords":[-114.02,46.875],
       "lat": 46.875,
       "lng": -114.021
     }
@@ -837,12 +953,14 @@
     {
       "name": "Dover",
       "capital": true,
+      "coords":[-75.561,39.1],
       "lat": 39.161,
       "lng": -75.52
     },
     {
       "name": "Wilmington",
       "capital": false,
+      "coords":[-75.541,39.742],
       "lat": 39.742,
       "lng": -75.541,
       "ta": "start"
@@ -852,18 +970,21 @@
     {
       "name": "Montpelier",
       "capital": true,
+      "coords":[-72.576,44.26],
       "lat": 44.266,
       "lng": -72.572
     },
     {
       "name": "Burlington",
       "capital": false,
+      "coords":[-73.238,44.48],
       "lat": 44.488,
       "lng": -73.231
     },
     {
       "name": "Barre",
       "capital": false,
+      "coords":[-72.508,44.2],
       "lat": 44.2,
       "lng": -72.508,
       "ta": "start"
@@ -873,12 +994,14 @@
     {
       "name": "Cheyenne",
       "capital": true,
+      "coords":[-104.75,41.13],
       "lat": 41.135,
       "lng": -104.79
     },
     {
       "name": "Casper",
       "capital": false,
+      "coords":[-106.32,42.842],
       "lat": 42.842,
       "lng": -106.321
     }
@@ -887,6 +1010,7 @@
     {
       "name": "St. Paul",
       "capital": false,
+      "coords":[-93.104,44.948],
       "lat": 44.948,
       "lng": -93.104,
       "ta": "start"
@@ -894,6 +1018,7 @@
     {
       "name": "Minneapolis",
       "capital": false,
+      "coords":[-93.268,44.964],
       "lat": 44.964,
       "lng": -93.268,
       "ta": "end"
