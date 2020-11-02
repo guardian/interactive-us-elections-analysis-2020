@@ -21,8 +21,12 @@ $neutral-replacement: #dbd8ce;
     background-color: #fbf6ef;
 }
 
+.ios, .android {
+  background-color: #fbf6ef !important;
+}
+
 body.android>figure.element-atom, .body.ios>figure.element-atom {
-  background-color: #fbf6ef;
+  background-color: #fbf6ef !important;
 }
 
 .content--interactive:not(.paid-content) .element-interactive {
