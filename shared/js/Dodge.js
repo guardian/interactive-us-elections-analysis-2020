@@ -13,6 +13,7 @@ class Dodge {
 
       circles.push(
       {
+        id:d.id,
         x: xScale(d.swing),
         r: radius(d.population),
         data: d

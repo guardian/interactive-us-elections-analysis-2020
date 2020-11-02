@@ -2,6 +2,7 @@ import * as d3 from 'd3'
 import data from 'shared/js/data-parser.js'
 import demographics from 'assets/json/demographics.json'
 import Dodge from 'shared/js/Dodge.js'
+import * as d3Annotation from 'd3-svg-annotation'
 
 data.map(d => {
 
@@ -13,6 +14,8 @@ data.map(d => {
 	}
 })
 
+const countyId = '36005';
+
 let key = d3.select('.interactive-wrapper-bees-age')
 .append("div")
 .attr('class', 'key-bees')
@@ -23,7 +26,7 @@ const kdem = key
 
 kdem.append('span')
 .attr('class', 'key-text-dem')
-.html('Swing to Democrats')
+.html('Areas that swung to Democrats')
 
 kdem
 .append('svg')
@@ -35,7 +38,7 @@ const krep = key
 
 krep.append('span')
 .attr('class', 'key-text-rep')
-.html('Swing to Republicans')
+.html('Areas that swung to Republicans')
 
 krep
 .append('svg')
@@ -72,8 +75,7 @@ let legend = d3.select('.interactive-wrapper-bees-age')
 .attr('class', 'legend-bees')
 
 legend.append('p')
-.html('Population')
-
+.html('County population')
 
 const lsvg = legend.append('svg')
 .attr('width', 110)
@@ -116,19 +118,46 @@ const makeChart = (svg, dodge, max, className) => {
 	.data(dodge)
 	.enter()
 	.append("circle")
-	.attr('class', d => d.data.id + ' p' + d.data.population + ' s' + d.data.swing )
+	.attr('class', d => 'id' + d.data.id + ' p' + d.data.population + ' s' + d.data.swing )
 	.attr("cx", d => d.x)
 	.attr("cy", d => (max.y + max.r - margin.bottom - d.y) + margin.top)
 	.attr("r", d => d.r)
 	.style('fill', d => d.data.swing < 0 ? "#25428F" : '#c70000')
+	.style('stroke', d => d.id === countyId ? '#333' : 'none')
+	.style('stroke-width', 2)
 
 	svg.attr('height', max.y + max.r)
 
 	dist = d3.select('.' + className).node().getBoundingClientRect().height + margin.top;
 
 	svg.attr('height', dist)
-}
 
+	let node = dodge.find(f =>f.id === countyId);
+
+	if(node)
+	{
+		svg.append("text")
+		.attr('x', node.x)
+		.attr('y', dist - node.y)
+		.attr('dy', dist - node.y > dist / 2 ? '-1em' : '2em')
+		.attr('class', 'bees-county-annotation-white')
+		.style('text-anchor', node.x > width / 2 ? 'end' : 'start')
+		.text(node.data.name)
+
+		svg.append("text")
+		.attr('x', node.x)
+		.attr('y', dist - node.y)
+		.attr('dy', dist - node.y > dist / 2 ? '-1em' : '2em')
+		.attr('class', 'bees-county-annotation')
+		.style('text-anchor', node.x > width / 2 ? 'end' : 'start')
+		.text(node.data.name)
+
+		svg.append("path")
+		.attr('d',  dist - node.y > dist / 2 ? `M${node.x}, ${dist - node.y} ${node.x},${dist - node.y -10}` : `M${node.x}, ${dist - node.y} ${node.x},${dist - node.y +10}`)
+		.attr('stroke', '#333')
+		.attr('stroke-width', 1.5)
+	}
+}
 
 agesVariables.map(v => {
 
@@ -217,3 +246,11 @@ agesVariables.map(v => {
 	.attr('y2', dist)
 
 })
+
+
+
+
+
+
+
+

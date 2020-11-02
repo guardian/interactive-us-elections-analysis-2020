@@ -59,14 +59,36 @@ data2016.map(d => {
 	}
 });
 
+
+let partiesRaw = data2020.map(d => {
+	if(d[1].candidates)
+	{
+		return Object.values(d[1].candidates).map(d => d.party)
+	}
+})
+
+
 data2020.map(d => {
 
 	if(d[1].candidates)
 	{
 		if(d[1].candidates.find(party => party.party === 'R') && d[1].candidates.find(party => party.party === 'D'))
 		{
-			let RVotes = d[1].candidates.find(party => party.party === 'R').votes
-			let DVotes = d[1].candidates.find(party => party.party === 'D').votes
+			let RVotes = d[1].candidates.find(party => party.party === 'R').votes;
+			let DVotes = d[1].candidates.find(party => party.party === 'D').votes;
+			let OVotes = d[1].candidates.find(party => party.party === 'O');
+			let IVotes = d[1].candidates.find(party => party.party === 'I');
+
+			if(OVotes)
+			{
+				OVotes = d[1].candidates.find(party => party.party === 'O').votes;
+			}
+
+			if(IVotes)
+			{
+				IVotes = d[1].candidates.find(party => party.party === 'I').votes;
+			}
+			
 
 			let RShare = RVotes / (RVotes + DVotes) * 100 || 0;
 			let DShare = DVotes / (RVotes + DVotes) * 100 || 0;
@@ -79,11 +101,13 @@ data2020.map(d => {
 				data.push({
 				id:d[0],
 				name:d[1].name,
-				swing: swing,
-				RVotes:RVotes,
-				DVotes:DVotes,
-				RShare:RShare,
-				DShare:DShare
+				swing:swing,
+				RVotes:RVotes || null,
+				DVotes:DVotes || null,
+				RShare:RShare || null,
+				DShare:DShare || null,
+				OVotes:OVotes || null,
+				IVotes:IVotes || null,
 				})
 			}
 			else
@@ -95,7 +119,9 @@ data2020.map(d => {
 				RVotes:null,
 				DVotes:null,
 				RShare:null,
-				DShare:null
+				DShare:null,
+				OVotes:null,
+				IVotes:null
 				})
 			}
 			

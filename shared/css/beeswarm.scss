@@ -21,9 +21,10 @@
     margin: 0;
     padding: 0;
     background: transparent;
+    margin-bottom: 12px;
 }
 
-.interactive-wrapper-bees-age, .interactive-wrapper-bees-education, .interactive-wrapper-bees-income, .interactive-wrapper-bees-race, .interactive-wrapper-bees-urban-rural{
+.interactive-wrapper-bees-age, .interactive-wrapper-bees-education, .interactive-wrapper-bees-income, .interactive-wrapper-bees-race, .interactive-wrapper-bees-urban-rural, .interactive-wrapper-bees-old{
 	border-bottom: 1px solid #dcdcdc;
 }
 
@@ -81,7 +82,7 @@
 
     span{
 
-        max-width: 200px;
+        max-width: 130px;
 
          @include mq($from: 100px, $until: 620px){
             max-width: 80px;
@@ -145,4 +146,23 @@
 }
 .legend-circle{
     fill:#bababa;
+}
+
+.bees-county-annotation{
+    font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    font-size:14px;
+    color:#333;
+    font-weight: bold;
+}
+
+.bees-county-annotation-white{
+    font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    font-size:14px;
+    stroke:#fbf6ef;
+    stroke-width:3px;
+    font-weight: bold;
+}
+
+.interactive-wrapper-bees-age, .interactive-wrapper-bees-covid, .interactive-wrapper-bees-education, .interactive-wrapper-bees-income, .interactive-wrapper-bees-old, .interactive-wrapper-bees-race, .interactive-wrapper-bees-urban-rural{
+    margin-bottom: 12px;
 }

@@ -9,14 +9,14 @@ data.map(d => {
 	let match = demographics.find(f => f.county_fip_id === +d.id)
 
 	if(match){
-		d.education_bucket = match.education_bucket;
+		d.old = match.old_bucket;
 		d.population = match.population;
 	}
 })
 
-const countyId = '36005';
+const countyId = '06085';
 
-let key = d3.select('.interactive-wrapper-bees-education')
+let key = d3.select('.interactive-wrapper-bees-old')
 .append("div")
 .attr('class', 'key-bees')
 
@@ -44,16 +44,16 @@ krep
 .append('svg')
 .html(`<polygon points="24.9,2.5 20.6,0 20.6,2 0,2 0,3 20.6,3 20.6,5 "></polygon>`)
 
-let educationVariables = [
-'Less than 15% with degree',
-'15-20% with degree',
-'20-30% with degree',
-'Over 30% with degree'
+let urbanRuralVariables = [
+'Under 15% aged over 65',
+'15-20% aged over 65',
+'20-25% aged over 65',
+'Over 25% aged over 65'
 ]
 
 let isMobile = window.matchMedia('(max-width: 700px)').matches;
 
-const atomEl = d3.select('.interactive-wrapper-bees-education').node();
+const atomEl = d3.select('.interactive-wrapper-bees-old').node();
 
 let width = atomEl.getBoundingClientRect().width;
 
@@ -69,7 +69,7 @@ let radius = d3.scaleSqrt()
 .range([0,.5,1,2,4,8])
 .domain([0,1000, 10000, 100000, 1000000, d3.max(demographics, d => d.population)])
 
-let legend = d3.select('.interactive-wrapper-bees-education')
+let legend = d3.select('.interactive-wrapper-bees-old')
 .append("div")
 .attr('class', 'legend-bees')
 
@@ -160,15 +160,15 @@ const makeChart = (svg, dodge, max, className) => {
 }
 
 
-educationVariables.map(v => {
+urbanRuralVariables.map(v => {
 
-	let datum = data.filter(d => d.education_bucket === v && d.swing != null);
+	let datum = data.filter(d => d.old === v && d.swing != null);
 
 	let dodge = new Dodge(datum, xScale, radius, padding);
 
 	let max = dodge.find(f => f.y == d3.max(dodge, d => d.y))
 
-	let header = d3.select('.interactive-wrapper-bees-education')
+	let header = d3.select('.interactive-wrapper-bees-old')
 	.append("div")
 	.attr("class", 'bees-header')
 	.html(v)
@@ -186,7 +186,7 @@ educationVariables.map(v => {
 
 	let winner = Object.entries(winnerObj).find(f => f[1] === maxPP)
 
-	let subheader = d3.select('.interactive-wrapper-bees-education')
+	let subheader = d3.select('.interactive-wrapper-bees-old')
 	.append("div")
 	.attr("class", 'bees-subheader')
 
@@ -200,7 +200,7 @@ educationVariables.map(v => {
 	.attr('class', 'bees-subheader-text')
 	.html(' swinging to ' + winner[0])*/
 
-	let svg = d3.select('.interactive-wrapper-bees-education')
+	let svg = d3.select('.interactive-wrapper-bees-old')
 	.append("svg")
 	.attr('id', 'svg-beeswarm-' + v.replace(/[_()-\s%$,]/g, ""))
 	.attr('class', 'svg-beeswarm')
