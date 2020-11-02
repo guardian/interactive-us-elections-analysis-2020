@@ -546,13 +546,14 @@ scrolly.addTrigger({num: 1, do: () => {
 	d3.selectAll('.state-county-labels')
 	.style('display', 'none')
 
-	svgMap.selectAll("path").transition();
+	svgMap.selectAll("path")
+    .interrupt()
+    .transition();
 
 	svgMap.selectAll("path")
 	.transition()
 	.duration(750)
 	.attr("d", path)
-
 
 	svgAnnotations
 	.style('display', 'block')
@@ -597,7 +598,9 @@ scrolly.addTrigger({num: 2, do: () => {
 	d3.selectAll('.state-county-labels')
 	.style('display', 'none')
 
-	svgMap.selectAll("path").transition();
+	svgMap.selectAll("path")
+    .interrupt()
+    .transition();
 
 	svgMap.selectAll("path")
 	.transition()
@@ -655,7 +658,9 @@ scrolly.addTrigger({num: 3, do: () => {
 			.style('display', 'block')
 		}
 
-		svgMap.selectAll("path").transition();
+		svgMap.selectAll("path")
+	    .interrupt()
+	    .transition();
 		
 		svgMap.selectAll("path")
 		.transition()
@@ -726,7 +731,9 @@ annotationsArray.map((annotation,i) => {
 			.attr('d', d => path)
 		}
 
-		svgMap.selectAll("path").transition();
+		svgMap.selectAll("path")
+	    .interrupt()
+	    .transition();
 
 		svgMap.selectAll("path")
 		.transition()
