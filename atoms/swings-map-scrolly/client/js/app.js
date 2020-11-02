@@ -87,7 +87,8 @@ let extents = [
 {type: "LineString",id:"39",name:"Ohio",coordinates:[[-84.82033611,38.40314185],[-80.518991,38.40314185],[-80.518991,42.32323642],[-84.82033611,42.32323642]]},
 {type: "LineString",id:"37",name:"North Carolina",coordinates:[[-84.32186902,33.75287798],[-75.40011906,33.75287798],[-75.40011906,36.58803627],[-84.32186902,36.58803627]]},
 {type: "LineString",id:"12",name:"Florida",coordinates:[[-87.63489605,24.39630799],[-79.97430602,24.39630799],[-79.97430602,31.00096799],[-87.63489605,31.00096799]]},
-{type: "LineString",id:"04",name:"Arizona",coordinates:[[-114.81835846,31.33221343],[-109.04520153,31.33221343],[-109.04520153,37.00425996],[-114.81835846,37.00425996]]}
+{type: "LineString",id:"04",name:"Arizona",coordinates:[[-114.81835846,31.33221343],[-109.04520153,31.33221343],[-109.04520153,37.00425996],[-114.81835846,37.00425996]]},
+{type: "LineString",id:"08",name:"Colorado",coordinates:[[-109.06018796,36.99242597],[-102.04158507,36.99242597],[-102.04158507,41.00340016],[-109.06018796,41.00340016]]}
 ];
 
 let projection = d3.geoAlbersUsa()
@@ -613,73 +614,76 @@ scrolly.addTrigger({num: 3, do: () => {
 }})
 
 
-annotations.sheets.annotations.map((annotation,i) => {
+let annotationsArray = annotations.sheets.annotations.filter(annotation => annotation.annotation != '' && !isNaN(annotation.id))
+
+console.log(annotationsArray)
 
 
-	if(annotation.annotation != '' && i > 2)
-	{
-		scrolly.addTrigger({num: i+1, do: () => {
+annotationsArray.map((annotation,i) => {
 
-			let extent = extents.find(f => f.id === annotation.id)
+	scrolly.addTrigger({num: i+4, do: () => {
 
-			projection
-			.fitExtent([[0, 0],[width, height]], extent)
+		let extent = extents.find(f => f.id === annotation.id)
 
-			d3.select('#canvas-choropleth')
-			.style('left', -2500 + 'px')
+		console.log(extent, annotation.id)
 
-			d3.selectAll('.canvas-arrows')
-			.style('left', -2500 + 'px')
+		projection
+		.fitExtent([[0, 0],[width, height]], extent)
 
-			stateLabelsGroup
-			.style('display', 'none')
+		d3.select('#canvas-choropleth')
+		.style('left', -2500 + 'px')
+
+		d3.selectAll('.canvas-arrows')
+		.style('left', -2500 + 'px')
+
+		stateLabelsGroup
+		.style('display', 'none')
+
+		countyLabelsGroup
+		.style('display', 'none')
+
+		d3.selectAll('.state-counties-selected')
+		.style('display', 'none')
+
+		d3.selectAll('.state-county-labels')
+		.style('display', 'none')
+
+		svgAnnotations
+		.style('display', 'none')
+
+		const callback = () => {
+
+			d3.select('.state-counties-selected.' + annotation.area.replace(/[_()-\s%$,]/g, ""))
+			.style('display', 'block')
+
+			d3.select('.state-county-labels.' + annotation.abbr)
+			.style('display', 'block')
+
+			d3.select('#canvas-' + annotation.area.replace(/[_()-\s%$,]/g, ""))
+			.style('left', '0px')
+
+			svgLabels.selectAll("text")
+			.attr('transform', d => `translate(${projection(d.coords)})`)
 
 			countyLabelsGroup
-			.style('display', 'none')
+			.style('display', 'block')
 
-			d3.selectAll('.state-counties-selected')
-			.style('display', 'none')
+			svgLabels.selectAll("circle")
+			.attr('cx', d => projection(d.coords)[0])
+			.attr('cy', d => projection(d.coords)[1])
+		}
 
-			d3.selectAll('.state-county-labels')
-			.style('display', 'none')
+		svgMap.selectAll("path").transition();
 
-			svgAnnotations
-			.style('display', 'none')
+		svgMap.selectAll("path")
+		.transition()
+		.duration(750)
+		.attr("d", path)
+		.on("end", (d,i) => {
+			if(i == svgMap.selectAll("path").nodes().length-1)callback()
+		});
 
-			const callback = () => {
-
-				d3.select('.state-counties-selected.' + annotation.area.replace(/[_()-\s%$,]/g, ""))
-				.style('display', 'block')
-
-				d3.select('.state-county-labels.' + annotation.abbr)
-				.style('display', 'block')
-
-				d3.select('#canvas-' + annotation.area.replace(/[_()-\s%$,]/g, ""))
-				.style('left', '0px')
-
-				svgLabels.selectAll("text")
-				.attr('transform', d => `translate(${projection(d.coords)})`)
-
-				countyLabelsGroup
-				.style('display', 'block')
-
-				svgLabels.selectAll("circle")
-				.attr('cx', d => projection(d.coords)[0])
-				.attr('cy', d => projection(d.coords)[1])
-			}
-
-			svgMap.selectAll("path").transition();
-
-			svgMap.selectAll("path")
-			.transition()
-			.duration(750)
-			.attr("d", path)
-			.on("end", (d,i) => {
-				if(i == svgMap.selectAll("path").nodes().length-1)callback()
-			});
-	
-		}})
-	}
+	}})
 
 })
 
