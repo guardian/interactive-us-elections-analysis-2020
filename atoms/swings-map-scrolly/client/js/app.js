@@ -122,7 +122,7 @@ annotations.sheets.annotations.map(annotation => {
 		.enter()
 		.append('path')
 		.attr('d', path)
-		.attr('class', `elex-county`)
+		.attr('class', d => `elex-county elex-county-${d.id}`)
 	}
 })
 
@@ -195,7 +195,7 @@ annotations.sheets.annotations.map(annotation => {
 		let stateGroup = countyLabelsGroup.append('g')
 		.attr('class', 'state-county-labels ' + annotation.abbr)
 
-		makeLabels(stateGroup, cityLabels, '-0.7em')
+		makeLabels(stateGroup, cityLabels, '-0.7em');
 	}
 
 })
@@ -211,7 +211,16 @@ let annotationCoords = [-83.3187797,45.1407638]
 
 let flipAnnotation = svgAnnotations.append('g')
 
-let annotaionText = flipAnnotation.append('text')
+let annotaionText = flipAnnotation.append('g')
+
+annotaionText.append('text')
+.attr('class', 'flip-states-annotation-white')
+.style('text-anchor', 'start')
+.attr("dx", "0.3em")
+.attr("dy", "-2em")
+.text('Flip states')
+
+annotaionText.append('text')
 .attr('class', 'flip-states-annotation')
 .style('text-anchor', 'start')
 .attr("dx", "0.3em")
@@ -236,6 +245,28 @@ let arrowhead = flipAnnotation
 
 flipAnnotation
 .attr('transform', d => `translate(${projection(annotationCoords)})`)
+
+
+let citiesHighlight = annotations.sheets.annotations.filter(annotation => annotation.cities != '');
+
+citiesHighlight.map(d => {
+
+	let stateGroup = d3.select('.state-county-labels.' + d.abbr)
+
+	JSON.parse(d.cities).map(d => {
+
+		makeLabels(stateGroup, [d], '-0.7em')
+
+		let county = countiesFeature.features.find(c => c.id === d.id);
+
+		d3.select(`.elex-county.elex-county-${d.id}`)
+		.classed('elex-county-selected', true)
+
+	})
+
+	
+
+})
 
 
 //================DRAW ARROWS======================================
@@ -389,8 +420,26 @@ annotations.sheets.annotations.map((annotation,i) => {
 		countiesFeature.features.map(d => {
 			if(d.properties.parties)
 			{
-				context.fillStyle = d.properties.parties.winner === 'R' ? '#c70000' : '#25428F';
-				context.strokeStyle = d.properties.parties.winner === 'R' ? '#c70000' : '#25428F';
+
+				let color = '#bababa'
+
+				if(d.properties.parties.winner === 'R') color = '#c70000';
+				if(d.properties.parties.winner === 'D') color = '#25428F';
+				if(d.properties.parties.winner === 'I') color = '#f3c000';
+				if(d.properties.parties.winner === 'O') color = '#f3c000';
+
+				context.fillStyle = color;
+				context.strokeStyle = color;
+				context.lineWidth = 1;
+				context.beginPath();
+				newpath(d);
+				context.fill();
+				context.stroke();
+			}
+			else{
+				let color = '#bababa';
+				context.fillStyle = color;
+				context.strokeStyle = color;
 				context.lineWidth = 1;
 				context.beginPath();
 				newpath(d);
@@ -500,7 +549,10 @@ scrolly.addTrigger({num: 1, do: () => {
 	svgMap.selectAll("path").transition();
 
 	svgMap.selectAll("path")
+	.transition()
+	.duration(750)
 	.attr("d", path)
+
 
 	svgAnnotations
 	.style('display', 'block')
@@ -548,6 +600,8 @@ scrolly.addTrigger({num: 2, do: () => {
 	svgMap.selectAll("path").transition();
 
 	svgMap.selectAll("path")
+	.transition()
+	.duration(750)
 	.attr("d", path)
 
 	svgAnnotations
@@ -616,16 +670,12 @@ scrolly.addTrigger({num: 3, do: () => {
 
 let annotationsArray = annotations.sheets.annotations.filter(annotation => annotation.annotation != '' && !isNaN(annotation.id))
 
-console.log(annotationsArray)
-
 
 annotationsArray.map((annotation,i) => {
 
 	scrolly.addTrigger({num: i+4, do: () => {
 
 		let extent = extents.find(f => f.id === annotation.id)
-
-		console.log(extent, annotation.id)
 
 		projection
 		.fitExtent([[0, 0],[width, height]], extent)
@@ -671,6 +721,9 @@ annotationsArray.map((annotation,i) => {
 			svgLabels.selectAll("circle")
 			.attr('cx', d => projection(d.coords)[0])
 			.attr('cy', d => projection(d.coords)[1])
+
+			svgLabels.selectAll("path")
+			.attr('d', d => path)
 		}
 
 		svgMap.selectAll("path").transition();

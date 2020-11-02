@@ -135,6 +135,12 @@
 	stroke:#dadada;
 }
 
+.elex-county-selected{
+	fill:none;
+	stroke:#333;
+	stroke-width:2px;
+}
+
 .arrow-poly.D{
 	fill:#25428F;
 }
@@ -396,10 +402,18 @@ canvas{
 	display: none;
 }
 
-.flip-states-annotation{
+.flip-states-annotation, .flip-states-annotation-white{
 	font-family: "Guardian Text Sans Web","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
 	font-size: 14px;
 	color: #333;
 	font-weight: 900;
+}
+
+.flip-states-annotation-white{
+	stroke: #fff;
+	stroke-width: 2;
+	stroke-linejoin: round;
+	stroke-opacity: .7;
+	fill: none;
 }
 
