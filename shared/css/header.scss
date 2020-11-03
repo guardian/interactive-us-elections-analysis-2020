@@ -281,3 +281,19 @@ a,
     margin-bottom: 6px;
   }
 }
+
+body.ios .article__header {
+    background-color: #fbf6ef;
+}
+
+.ios .article__body {
+    background-color: #fbf6ef;
+}
+
+body.android .article__header {
+    background-color: #fbf6ef;
+}
+
+.android .article__body {
+    background-color: #fbf6ef;
+}

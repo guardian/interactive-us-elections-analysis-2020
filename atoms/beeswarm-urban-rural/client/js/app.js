@@ -204,11 +204,12 @@ urbanRuralVariables.map(v => {
 	.attr('id', 'svg-beeswarm-' + v.replace(/[_()-\s%$,]/g, ""))
 	.attr('class', 'svg-beeswarm')
 	.attr("width", width)
+	.attr('height', 0)
 
 	const xAxis = svg.append("g")
 	.call(
 	    d3.axisBottom(xScale)
-	    .tickFormat(d => Math.abs(d))
+	    .tickFormat(d => parseInt(Math.abs(d)))
 	    .ticks(4)
 	)
 	.attr('transform', 'translate(0,0)')
@@ -235,15 +236,29 @@ urbanRuralVariables.map(v => {
 		
 	})
 
-	zeroText.innerHTML = 'No swing';
-	zeroText.setAttribute("style", "fill:#333;");
+	if(zeroText)
+	{
+		zeroText.innerHTML = 'No swing';
+		zeroText.setAttribute("style", "fill:#333;");
+	}
 
 	svg.selectAll(".domain").remove();
 
-	makeChart(svg, dodge, max, 'c' + v.replace(/[_()-\s%$,]/g, ""))
+	if(dodge.length > 0)
+	{
+		makeChart(svg, dodge, max, 'c' + v.replace(/[_()-\s%$,]/g, ""))
 
-	xAxis.selectAll('.tick line')
-	.attr('y1', 10)
-	.attr('y2', dist)
+		xAxis.selectAll('.tick line')
+		.attr('y1', 10)
+		.attr('y2', dist)
+	}
 
 })
+
+
+
+
+
+
+
+

@@ -88,7 +88,8 @@ let extents = [
 {type: "LineString",id:"37",name:"North Carolina",coordinates:[[-84.32186902,33.75287798],[-75.40011906,33.75287798],[-75.40011906,36.58803627],[-84.32186902,36.58803627]]},
 {type: "LineString",id:"12",name:"Florida",coordinates:[[-87.63489605,24.39630799],[-79.97430602,24.39630799],[-79.97430602,31.00096799],[-87.63489605,31.00096799]]},
 {type: "LineString",id:"04",name:"Arizona",coordinates:[[-114.81835846,31.33221343],[-109.04520153,31.33221343],[-109.04520153,37.00425996],[-114.81835846,37.00425996]]},
-{type: "LineString",id:"08",name:"Colorado",coordinates:[[-109.06018796,36.99242597],[-102.04158507,36.99242597],[-102.04158507,41.00340016],[-109.06018796,41.00340016]]}
+{type: "LineString",id:"08",name:"Colorado",coordinates:[[-109.06018796,36.99242597],[-102.04158507,36.99242597],[-102.04158507,41.00340016],[-109.06018796,41.00340016]]},
+{type: "LineString",id:"48",name:"Texas",coordinates:[[-106.64564605,25.83705992],[-93.50782176,25.83705992],[-93.50782176,36.50045285],[-106.64564605,36.50045285]]}
 ];
 
 let projection = d3.geoAlbersUsa()
@@ -374,23 +375,28 @@ annotations.sheets.annotations.map((annotation,i) => {
 
 			if(d.properties.parties)
 			{
-				let leader = d.properties.parties.winner;
+				let winner = d.properties.parties.winner;
 
-				let geo = d.properties.parties.id == '02000' ? statesFeature.features.find(id => id.properties.name === 'Alaska') : d;
+				if(winner)
+				{
+					let geo = d.properties.parties.id == '02000' ? statesFeature.features.find(id => id.properties.name === 'Alaska') : d;
 
-				if(geo){
+					if(geo){
 
-					let centroid = path.centroid(geo);
+						let centroid = path.centroid(geo);
 
-					let scale = scaleArrow(Math.abs(d.properties.parties.swing));
+						let scale = scaleArrow(Math.abs(d.properties.parties.swing));
 
-					let rotation = leader == 'R' ? 330 * Math.PI / 180 : 210 * Math.PI / 180;
+						let rotation = winner == 'R' ? 330 * Math.PI / 180 : 210 * Math.PI / 180;
 
-					let color = leader == 'R' ? '#c70000' : '#25428F';
+						let color = winner == 'R' ? '#c70000' : '#25428F';
 
-					makeArrow(context, centroid, scale,  rotation, color)
+						makeArrow(context, centroid, scale,  rotation, color)
 
+					}
 				}
+
+				
 			}
 
 			
@@ -421,7 +427,7 @@ annotations.sheets.annotations.map((annotation,i) => {
 			if(d.properties.parties)
 			{
 
-				let color = '#bababa'
+				let color = '#dcdcdc'
 
 				if(d.properties.parties.winner === 'R') color = '#c70000';
 				if(d.properties.parties.winner === 'D') color = '#25428F';
@@ -437,7 +443,9 @@ annotations.sheets.annotations.map((annotation,i) => {
 				context.stroke();
 			}
 			else{
-				let color = '#bababa';
+
+				let color = '#dcdcdc';
+				
 				context.fillStyle = color;
 				context.strokeStyle = color;
 				context.lineWidth = 1;

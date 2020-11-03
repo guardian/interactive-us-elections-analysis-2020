@@ -17,12 +17,14 @@ export async function render() {
 		{
 			let max = Math.max(...[d.RVotes, d.DVotes, d.OVotes, d.IVotes]);
 
-			let winner = Object.entries(d).find(f => f[1] === max)[0].substr(0,1);
+			let winner = null;
+
+			if(max > 0)winner = Object.entries(d).find(f => f[1] === max)[0].substr(0,1);
 
 			match.properties.parties = {
 
 				dataId:d.id,
-				dadtaName:d.name,
+				dataName:d.name,
 				swing:d.swing,
 				RVotes:d.RVotes || null,
 				DVotes:d.DVotes || null,
