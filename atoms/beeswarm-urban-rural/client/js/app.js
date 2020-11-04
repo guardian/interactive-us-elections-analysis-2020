@@ -14,7 +14,7 @@ data.map(d => {
 	}
 })
 
-const countyId = '29189';
+const countyIds = ['04013','12063'];
 
 let key = d3.select('.interactive-wrapper-bees-urban-rural')
 .append("div")
@@ -122,7 +122,7 @@ const makeChart = (svg, dodge, max, className) => {
 	.attr("cy", d => (max.y + max.r - margin.bottom - d.y) + margin.top)
 	.attr("r", d => d.r)
 	.style('fill', d => d.data.swing < 0 ? "#25428F" : '#c70000')
-	.style('stroke', d => d.id === countyId ? '#333' : 'none')
+	.style('stroke', d => countyIds.indexOf(d.id) > -1 ? '#333' : 'none')
 	.style('stroke-width', 2)
 
 	svg.attr('height', max.y + max.r)
@@ -131,31 +131,38 @@ const makeChart = (svg, dodge, max, className) => {
 
 	svg.attr('height', dist)
 
-	let node = dodge.find(f =>f.id === countyId);
+	countyIds.map(countyId => {
 
-	if(node)
-	{
-		svg.append("text")
-		.attr('x', node.x)
-		.attr('y', dist - node.y)
-		.attr('dy', dist - node.y > dist / 2 ? '-1em' : '2em')
-		.attr('class', 'bees-county-annotation-white')
-		.style('text-anchor', node.x > width / 2 ? 'end' : 'start')
-		.text(node.data.name)
+		let node = dodge.find(f => f.id === countyId);
 
-		svg.append("text")
-		.attr('x', node.x)
-		.attr('y', dist - node.y)
-		.attr('dy', dist - node.y > dist / 2 ? '-1em' : '2em')
-		.attr('class', 'bees-county-annotation')
-		.style('text-anchor', node.x > width / 2 ? 'end' : 'start')
-		.text(node.data.name)
+		//console.log(node)
 
-		svg.append("path")
-		.attr('d',  dist - node.y > dist / 2 ? `M${node.x}, ${dist - node.y} ${node.x},${dist - node.y -10}` : `M${node.x}, ${dist - node.y} ${node.x},${dist - node.y +10}`)
-		.attr('stroke', '#333')
-		.attr('stroke-width', 1.5)
-	}
+		if(node)
+		{
+			svg.append("text")
+			.attr('x', node.x)
+			.attr('y', dist - node.y)
+			.attr('dy', dist - node.y > dist / 2 ? '-1em' : '2em')
+			.attr('class', 'bees-county-annotation-white')
+			.style('text-anchor', node.x > width / 2 ? 'end' : 'start')
+			.text(node.data.name)
+
+			svg.append("text")
+			.attr('x', node.x)
+			.attr('y', dist - node.y)
+			.attr('dy', dist - node.y > dist / 2 ? '-1em' : '2em')
+			.attr('class', 'bees-county-annotation')
+			.style('text-anchor', node.x > width / 2 ? 'end' : 'start')
+			.text(node.data.name)
+
+			svg.append("path")
+			.attr('d',  dist - node.y > dist / 2 ? `M${node.x}, ${dist - node.y} ${node.x},${dist - node.y -10}` : `M${node.x}, ${dist - node.y} ${node.x},${dist - node.y +10}`)
+			.attr('stroke', '#333')
+			.attr('stroke-width', 1.5)
+		}
+
+	})
+
 }
 
 
@@ -164,6 +171,8 @@ urbanRuralVariables.map(v => {
 	let datum = data.filter(d => d.urban_category === v && d.swing != null);
 
 	let dodge = new Dodge(datum, xScale, radius, padding);
+
+	dodge.map(d => console.log(d.id))
 
 	let max = dodge.find(f => f.y == d3.max(dodge, d => d.y))
 

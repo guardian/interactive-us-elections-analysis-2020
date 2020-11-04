@@ -14,7 +14,7 @@ data.map(d => {
 	}
 })
 
-const countyId = '36005';
+const countyIds = ['54047','48085'];
 
 let key = d3.select('.interactive-wrapper-bees-education')
 .append("div")
@@ -123,7 +123,7 @@ const makeChart = (svg, dodge, max, className) => {
 	.attr("cy", d => (max.y + max.r - margin.bottom - d.y) + margin.top)
 	.attr("r", d => d.r)
 	.style('fill', d => d.data.swing < 0 ? "#25428F" : '#c70000')
-	.style('stroke', d => d.id === countyId ? '#333' : 'none')
+	.style('stroke', d => countyIds.indexOf(d.id) > -1 ? '#333' : 'none')
 	.style('stroke-width', 2)
 
 	svg.attr('height', max.y + max.r)
@@ -132,31 +132,38 @@ const makeChart = (svg, dodge, max, className) => {
 
 	svg.attr('height', dist)
 
-	let node = dodge.find(f =>f.id === countyId);
 
-	if(node)
-	{
-		svg.append("text")
-		.attr('x', node.x)
-		.attr('y', dist - node.y)
-		.attr('dy', dist - node.y > dist / 2 ? '-1em' : '2em')
-		.attr('class', 'bees-county-annotation-white')
-		.style('text-anchor', node.x > width / 2 ? 'end' : 'start')
-		.text(node.data.name)
+	countyIds.map(countyId => {
 
-		svg.append("text")
-		.attr('x', node.x)
-		.attr('y', dist - node.y)
-		.attr('dy', dist - node.y > dist / 2 ? '-1em' : '2em')
-		.attr('class', 'bees-county-annotation')
-		.style('text-anchor', node.x > width / 2 ? 'end' : 'start')
-		.text(node.data.name)
+		let node = dodge.find(f =>f.id === countyId);
 
-		svg.append("path")
-		.attr('d',  dist - node.y > dist / 2 ? `M${node.x}, ${dist - node.y} ${node.x},${dist - node.y -10}` : `M${node.x}, ${dist - node.y} ${node.x},${dist - node.y +10}`)
-		.attr('stroke', '#333')
-		.attr('stroke-width', 1.5)
-	}
+		if(node)
+		{
+			svg.append("text")
+			.attr('x', node.x)
+			.attr('y', dist - node.y)
+			.attr('dy', dist - node.y > dist / 2 ? '-1em' : '2em')
+			.attr('class', 'bees-county-annotation-white')
+			.style('text-anchor', node.x > width / 2 ? 'end' : 'start')
+			.text(node.data.name)
+
+			svg.append("text")
+			.attr('x', node.x)
+			.attr('y', dist - node.y)
+			.attr('dy', dist - node.y > dist / 2 ? '-1em' : '2em')
+			.attr('class', 'bees-county-annotation')
+			.style('text-anchor', node.x > width / 2 ? 'end' : 'start')
+			.text(node.data.name)
+
+			svg.append("path")
+			.attr('d',  dist - node.y > dist / 2 ? `M${node.x}, ${dist - node.y} ${node.x},${dist - node.y -10}` : `M${node.x}, ${dist - node.y} ${node.x},${dist - node.y +10}`)
+			.attr('stroke', '#333')
+			.attr('stroke-width', 1.5)
+		}
+
+	})
+
+	
 }
 
 

@@ -4,6 +4,7 @@ import counties from 'us-atlas/counties-10m.json'
 import data from 'shared/js/data-parser.js'
 import labels from 'assets/json/new_labels-1.json'
 
+console.log(data)
 
 //====================STRUCTURE===================
 
@@ -26,9 +27,9 @@ const projection = d3.geoAlbersUsa()
 
 const path = d3.geoPath().projection(projection)
 
-const scaleArrow = d3.scaleLinear()
-.range([0.1,1])
-.domain([0, d3.max(data, d => Math.abs(d.swing))])
+let scaleArrow = d3.scaleLog()
+.range([0.01,0.5])
+.domain([d3.min(data, d => Math.abs(d.swing)), d3.max(data, d => Math.abs(d.swing))])
 
 
 //================SVG MAP======================================
@@ -82,6 +83,8 @@ const makeArrows = (group, data) =>{
 
 	data.map(d => {
 
+		if(d.id === '12086')console.log(d)
+
 		let leader = d.swing > 0 ? 'R' : 'D';
 
 		let arrowLength = 300;
@@ -98,7 +101,7 @@ const makeArrows = (group, data) =>{
 
 			group
 			.append('polygon')
-			.attr('class', `arrow-poly ${leader}` )
+			.attr('class', `arrow-poly id-${d.id} ${d.name} ${leader} s${d.swing}` )
 			.attr('points', arrow)
 			.attr('transform', `translate(${centroid[0]}, ${centroid[1]}) scale(${scale / 2}) rotate(${leader == 'R' ? 330 : 210})`)
 

@@ -6,7 +6,7 @@ import ScrollyTeller from 'shared/js/scrollyteller'
 import annotations from 'assets/json/annotations.json'
 import cities from 'assets/json/city_labels.json'
 
-console.log('v4')
+console.log('v5')
 
 const countiesFeature = topojson.feature(counties, counties.objects.counties);
 const statesFeature = topojson.feature(counties, counties.objects.states);
@@ -40,9 +40,13 @@ annotations.sheets.annotations.map((state,i) => {
 
 //====================STRUCTURE===================
 
-let stateLabels = Object.entries(labels).map(d => d[1]);
+let stateLabels = Object.entries(labels).map(d => d[1]).filter((d,i) => {
+	if(d.name != 'Colo.')return d
+});
 
-let stateLabelsMobile = stateLabels.filter((d,i) => {if(i%3 == 0)return d})
+let stateLabelsMobile = stateLabels.filter((d,i) => {
+	if(i%3 == 0 && d.name != 'Maine' && d.name != 'Utah')return d
+})
 
 const dpr = window.devicePixelRatio || 1;
 
@@ -51,7 +55,7 @@ const atomEl = d3.select('.interactive-wrapper');
 let isMobile = window.matchMedia('(max-width: 700px)').matches;
 
 const width = atomEl.node().getBoundingClientRect().width;
-const height = width * 0.6;
+const height = isMobile ? width * .6 : window.innerHeight - 150;
 
 const divAll = d3.select('.div-all')
 .style('height' , height + "px");
@@ -77,8 +81,8 @@ let extents = [
          coordinates: [
             [-120,50],//[minLon, maxLat]
             [-73,50],//[maxLon, maxLat
-            [-73,24],//[maxLon, minLat]
-            [-120,24]//[minLon, minLat]
+            [-73,23.5],//[maxLon, minLat]
+            [-120,23.5]//[minLon, minLat]
         ]
 },
 {type: "LineString",id:"42",name:"Pennsylvania",coordinates:[[-81,38.1],[-73,38.1],[-73,42.51468907],[-81,42.51468907]]},
@@ -86,10 +90,10 @@ let extents = [
 {type: "LineString",id:"26",name:"Michigan",coordinates:[[-90.41862022,41.69604543],[-82.12280564,41.69604543],[-82.12280564,48.30606297],[-90.41862022,48.30606297]]},
 {type: "LineString",id:"39",name:"Ohio",coordinates:[[-84.82033611,38.40314185],[-80.518991,38.40314185],[-80.518991,42.32323642],[-84.82033611,42.32323642]]},
 {type: "LineString",id:"37",name:"North Carolina",coordinates:[[-84.32186902,33.75287798],[-75.40011906,33.75287798],[-75.40011906,36.58803627],[-84.32186902,36.58803627]]},
-{type: "LineString",id:"12",name:"Florida",coordinates:[[-87.63489605,24.39630799],[-79.97430602,24.39630799],[-79.97430602,31.00096799],[-87.63489605,31.00096799]]},
+{type: "LineString",id:"12",name:"Florida",coordinates:[[-87.63489605,24.39630799],[-78,24.39630799],[-78,31.00096799],[-87.63489605,31.00096799]]},
 {type: "LineString",id:"04",name:"Arizona",coordinates:[[-114.81835846,31.33221343],[-109.04520153,31.33221343],[-109.04520153,37.00425996],[-114.81835846,37.00425996]]},
 {type: "LineString",id:"08",name:"Colorado",coordinates:[[-109.06018796,36.99242597],[-102.04158507,36.99242597],[-102.04158507,41.00340016],[-109.06018796,41.00340016]]},
-{type: "LineString",id:"48",name:"Texas",coordinates:[[-106.64564605,25.83705992],[-93.50782176,25.83705992],[-93.50782176,36.50045285],[-106.64564605,36.50045285]]}
+{type: "LineString",id:"48",name:"Texas",coordinates:[[-106.64564605,25.7],[-93.50782176,25.7],[-93.50782176,36.50045285],[-106.64564605,36.50045285]]}
 ];
 
 let projection = d3.geoAlbersUsa()
@@ -97,8 +101,8 @@ let projection = d3.geoAlbersUsa()
 
 const path = d3.geoPath().projection(projection)
 
-let scaleArrow = d3.scaleLinear()
-.range([0.1,1])
+let scaleArrow = d3.scaleLog()
+.range([0.01,0.5])
 
 let lengthPoints = [];
 
@@ -137,7 +141,7 @@ svgMap
 
 //================SVG LABELS & ANNOTATIONS======================================
 
-const makeLabels = (group, labels, offSetY) => {
+const makeLabels = (group, labels, offSetY, circle = true) => {
 
 	group.selectAll('label')
 	.data(labels)
@@ -161,14 +165,19 @@ const makeLabels = (group, labels, offSetY) => {
 	.attr("dx", "0.5em")
 	.attr("dy", offSetY)
 
-	group.selectAll('foo')
-	.data(labels.filter(f => f.capital != undefined))
-	.enter()
-	.append('circle')
-	.attr('class', 'city-label-circle')
-	.attr('r', 3)
-	.attr('cx', d => projection(d.coords)[0])
-	.attr('cy', d => projection(d.coords)[1])
+	if(circle)
+	{
+		group.selectAll('foo')
+		.data(labels.filter(f => f.capital != undefined))
+		.enter()
+		.append('circle')
+		.attr('class', 'city-label-circle')
+		.attr('r', 3)
+		.attr('cx', d => projection(d.coords)[0])
+		.attr('cy', d => projection(d.coords)[1])
+	}
+
+	
 }
 
 const svgLabels = divLabels
@@ -201,6 +210,7 @@ annotations.sheets.annotations.map(annotation => {
 
 })
 
+countyLabelsGroup.style('display', 'none')
 
 const svgAnnotations = divLabels
 .append('svg')
@@ -208,7 +218,7 @@ const svgAnnotations = divLabels
 .attr('width', width)
 .attr('height', height)
 
-let annotationCoords = [-83.3187797,45.1407638]
+let annotationCoords = [-109.0489727,36.762131]
 
 let flipAnnotation = svgAnnotations.append('g')
 
@@ -219,14 +229,14 @@ annotaionText.append('text')
 .style('text-anchor', 'start')
 .attr("dx", "0.3em")
 .attr("dy", "-2em")
-.text('Flip states')
+.text('Flip state')
 
 annotaionText.append('text')
 .attr('class', 'flip-states-annotation')
 .style('text-anchor', 'start')
 .attr("dx", "0.3em")
 .attr("dy", "-2em")
-.text('Flip states')
+.text('Flip state')
 
 
 let arrowshaft = flipAnnotation
@@ -250,25 +260,26 @@ flipAnnotation
 
 let citiesHighlight = annotations.sheets.annotations.filter(annotation => annotation.cities != '');
 
-citiesHighlight.map(d => {
 
-	let stateGroup = d3.select('.state-county-labels.' + d.abbr)
+if(!isMobile)
+{
+	citiesHighlight.map(d => {
 
-	JSON.parse(d.cities).map(d => {
 
-		makeLabels(stateGroup, [d], '-0.7em')
+		let stateGroup = d3.select('.state-county-labels.' + d.abbr)
 
-		let county = countiesFeature.features.find(c => c.id === d.id);
+		JSON.parse(d.cities).map(d => {
 
-		d3.select(`.elex-county.elex-county-${d.id}`)
-		.classed('elex-county-selected', true)
+			if(d.render)makeLabels(stateGroup, [d], '0em', false)
 
+			let county = countiesFeature.features.find(c => c.id === d.id);
+
+			d3.select(`.elex-county.elex-county-${d.id}`)
+			.classed('elex-county-selected', true)
+
+		})
 	})
-
-	
-
-})
-
+}
 
 //================DRAW ARROWS======================================
 
@@ -334,6 +345,8 @@ const makeArrow = (context, centroid, scale, rotation, color) => {
 	context.stroke();
 	context.fill();
 
+	context.restore()
+
 }
 
 //================CANVAS======================================
@@ -369,7 +382,17 @@ annotations.sheets.annotations.map((annotation,i) => {
 			
 		})
 
-		scaleArrow.domain([0, max])
+		let  min = d3.min(stateData, d => {
+			if(d.properties.parties)
+			{
+				return Math.abs(d.properties.parties.swing)
+			}
+			
+		})
+
+		if(!isNaN(annotation.id))scaleArrow.range([0.01,0.7])
+
+		scaleArrow.domain([min,max])
 
 		stateData.map((d,i) => {
 
@@ -387,19 +410,15 @@ annotations.sheets.annotations.map((annotation,i) => {
 
 						let scale = scaleArrow(Math.abs(d.properties.parties.swing));
 
-						let rotation = winner == 'R' ? 330 * Math.PI / 180 : 210 * Math.PI / 180;
+						let rotation = +d.properties.parties.swing > 0 ? (330 * Math.PI) / 180 : (210 * Math.PI) / 180;
 
-						let color = winner == 'R' ? '#c70000' : '#25428F';
+						let color = +d.properties.parties.swing > 0 ? '#c70000' : '#25428F';
 
 						makeArrow(context, centroid, scale,  rotation, color)
 
 					}
 				}
-
-				
 			}
-
-			
 		})
 
 		canvas
@@ -423,9 +442,14 @@ annotations.sheets.annotations.map((annotation,i) => {
 		const newpath = d3.geoPath().projection(projection)
 		newpath.context(context);
 
+		let cont = 0
+		let cont2 = 0
+
 		countiesFeature.features.map(d => {
 			if(d.properties.parties)
 			{
+
+				cont++
 
 				let color = '#dcdcdc'
 
@@ -444,6 +468,8 @@ annotations.sheets.annotations.map((annotation,i) => {
 			}
 			else{
 
+				cont2++
+
 				let color = '#dcdcdc';
 				
 				context.fillStyle = color;
@@ -459,8 +485,14 @@ annotations.sheets.annotations.map((annotation,i) => {
 		canvas
 		.style("width", width + "px")
 		.style("height", height + "px")
+
+		console.log(cont, cont2)
 	}
+
+
 })
+
+
 
 //========================MAKE CARDS===============================
 
@@ -531,9 +563,6 @@ scrolly.addTrigger({num: 1, do: () => {
 	d3.select('.choropleth-key').style('display', 'flex')
 	d3.select('.arrows-key').style('display', 'none')
 	d3.select('.arrows-key-mobile').style('display', 'none')
-
-	svgMap.selectAll("path")
-	.attr("d", path)
 
 	svgLabels.selectAll("text")
 	.attr('transform', d => `translate(${projection(d.coords)})`)
@@ -680,7 +709,6 @@ scrolly.addTrigger({num: 3, do: () => {
 	}
 }})
 
-
 let annotationsArray = annotations.sheets.annotations.filter(annotation => annotation.annotation != '' && !isNaN(annotation.id))
 
 
@@ -702,6 +730,9 @@ annotationsArray.map((annotation,i) => {
 		stateLabelsGroup
 		.style('display', 'none')
 
+		svgAnnotations
+		.style('display', 'none')
+
 		countyLabelsGroup
 		.style('display', 'none')
 
@@ -709,9 +740,6 @@ annotationsArray.map((annotation,i) => {
 		.style('display', 'none')
 
 		d3.selectAll('.state-county-labels')
-		.style('display', 'none')
-
-		svgAnnotations
 		.style('display', 'none')
 
 		const callback = () => {

@@ -66,11 +66,10 @@ let partiesRaw = data2020.map(d => {
 		return Object.values(d[1].candidates).map(d => d.party)
 	}
 })
-
-
+console.log('reporting at 98%')
 data2020.map(d => {
 
-	if(d[1].reporting && d[1].reporting >= 90)
+	if(d[1].reporting && d[1].reporting >= 100)
 	{
 		if(d[1].candidates)
 		{
