@@ -18,14 +18,16 @@ $neutral-replacement: #dbd8ce;
 }
 
 .content--interactive {
-    background-color: #fbf6ef;
+  background-color: #fbf6ef;
 }
 
-.ios, .android {
+.ios,
+.android {
   background-color: #fbf6ef !important;
 }
 
-body.android>figure.element-atom, .body.ios>figure.element-atom {
+body.android>figure.element-atom,
+.body.ios>figure.element-atom {
   background-color: #fbf6ef !important;
 }
 
@@ -38,12 +40,21 @@ body.android>figure.element-atom, .body.ios>figure.element-atom {
   &::before {
     content: "";
     display: block;
+    // BIDEN:
     background-image: url("https://media.guim.co.uk/aaaafef5f200820a103415e61d72765547d27beb/0_0_4000_2400/2000.jpg");
+
+    // TRUMP:
+    // background-image: url("https://media.guim.co.uk/8bc258c66afef6d9c87b95bb75626fd66d584014/0_0_4000_2400/2000.jpg");
+
+    // No result:
+    // background-image: url("https://media.guim.co.uk/92f43739d36772e5753c70f373b80989ff149d59/0_0_2000_1200/2000.jpg");
+
     background-repeat: no-repeat;
     background-size: contain;
     background-position: left 0px bottom 0px;
     height: 58vw;
     margin-left: 0px;
+
     @include mq(tablet) {
       border-top: 0;
       margin-left: -20px;
@@ -54,6 +65,7 @@ body.android>figure.element-atom, .body.ios>figure.element-atom {
       width: 940px;
       height: 372px;
     }
+
     @include mq(leftCol) {
       width: 950px;
       padding-bottom: 10px;
@@ -61,10 +73,12 @@ body.android>figure.element-atom, .body.ios>figure.element-atom {
       // padding-top: 10px;
       background-position: left 0px bottom 0px;
     }
+
     @include mq(wide) {
       width: 1030px;
     }
   }
+
   &::after {
     content: "";
     width: calc(100% + 20px);
@@ -79,18 +93,19 @@ body.android>figure.element-atom, .body.ios>figure.element-atom {
       width: calc(100% + 40px);
     }
 
-    @include mq(tablet) {
+    @include mq(tablet) {}
 
-    }
     @include mq(desktop) {
       width: 980px;
-         top: 372px;
+      top: 372px;
     }
+
     @include mq(leftCol) {
       left: -10px;
       width: 970px;
       top: 392px;
     }
+
     @include mq(wide) {
       width: 1050px;
     }
@@ -102,6 +117,7 @@ body.android>figure.element-atom, .body.ios>figure.element-atom {
   font-size: 36px;
   position: relative;
   padding-top: 0;
+
   @include mq(mobileMedium) {
     @include fs-titlepiece(1);
   }
@@ -110,13 +126,15 @@ body.android>figure.element-atom, .body.ios>figure.element-atom {
     @include fs-titlepiece(2);
 
   }
+
   @include mq(leftCol) {
     padding-top: 10px;
   }
 }
 
 .content__standfirst,
-.standfirst, .content--interactive .content__standfirst {
+.standfirst,
+.content--interactive .content__standfirst {
   @include fs-headline(1);
   font-weight: 200;
   margin-top: 24px;
@@ -127,15 +145,18 @@ body.android>figure.element-atom, .body.ios>figure.element-atom {
     @include fs-headline(2);
     font-weight: 200;
   }
+
   @include mq(mobileLandscape) {
     max-width: 80%;
   }
+
   @include mq(tablet) {
     max-width: 540px;
   }
 }
 
 .u-cf {
+
   .content__meta-container,
   .meta__extras {
     margin-left: -10px;
@@ -150,12 +171,14 @@ body.android>figure.element-atom, .body.ios>figure.element-atom {
       padding-left: 20px;
       padding-right: 20px;
     }
+
     @include mq(desktop) {
       margin-right: -20px;
       margin-left: -20px;
       padding-left: 10px;
       padding-right: 10px;
     }
+
     @include mq(leftCol) {
       margin-left: -10px;
       margin-right: -10px;
@@ -163,6 +186,7 @@ body.android>figure.element-atom, .body.ios>figure.element-atom {
       padding-right: 0px;
     }
   }
+
   .meta__extras {
     @include mq(desktop) {
       margin-left: -10px;
@@ -180,6 +204,7 @@ body.android>figure.element-atom, .body.ios>figure.element-atom {
   @include mq(desktop) {
     width: 960px !important;
   }
+
   @include mq(wide) {
     width: 1040px !important;
   }
@@ -193,6 +218,7 @@ body.android>figure.element-atom, .body.ios>figure.element-atom {
 .content__main,
 .content__head {
   position: relative;
+
   &:before {
     position: absolute;
     top: 0;
@@ -223,18 +249,17 @@ a,
   cursor: pointer;
   text-decoration: none;
 }
+
 .tonal--tone-news .tone-colour {
   color: $news-main;
 }
 
 .content__meta-container {
-  background-image: repeating-linear-gradient(
-    to bottom,
-    $neutral-replacement,
-    $neutral-replacement 0.0625rem,
-    transparent 0.0625rem,
-    transparent 0.25rem
-  );
+  background-image: repeating-linear-gradient(to bottom,
+      $neutral-replacement,
+      $neutral-replacement 0.0625rem,
+      transparent 0.0625rem,
+      transparent 0.25rem);
   background-repeat: repeat-x;
   background-position: top;
   -webkit-background-size: 0.0625rem 0.8125rem;
@@ -248,6 +273,7 @@ a,
   .article__header .headline {
     padding: 4px 12px 30px 12px;
   }
+
   .headline {
     @include fs-headline(5);
     font-weight: 700;
@@ -257,23 +283,27 @@ a,
       font-weight: 700;
     }
   }
+
   .headline:after {
     top: calc(44vw + 10px);
     width: calc(100% + 10px);
   }
+
   .standfirst {
     @include fs-headline(1);
     font-weight: 200;
     margin-bottom: 20px;
     margin-top: 0px;
   }
+
   .byline {
-      a {
+    a {
       @include fs-header(1);
       font-size: 17px;
       font-weight: 700;
     }
   }
+
   h2 {
     @include fs-header(1);
     font-weight: 700;
@@ -283,17 +313,17 @@ a,
 }
 
 body.ios .article__header {
-    background-color: #fbf6ef;
+  background-color: #fbf6ef;
 }
 
 .ios .article__body {
-    background-color: #fbf6ef;
+  background-color: #fbf6ef;
 }
 
 body.android .article__header {
-    background-color: #fbf6ef;
+  background-color: #fbf6ef;
 }
 
 .android .article__body {
-    background-color: #fbf6ef;
+  background-color: #fbf6ef;
 }
