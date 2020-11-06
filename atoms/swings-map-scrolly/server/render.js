@@ -2,7 +2,6 @@ import mainHTML from "./atoms/swings-map-scrolly/server/templates/main.html!text
 import counties from 'us-atlas/counties-10m.json'
 import data from 'shared/js/data-parser.js'
 import fs from "fs";
-import * as d3 from 'd3'
 
 
 export async function render() {
@@ -25,6 +24,7 @@ export async function render() {
 
 				dataId:d.id,
 				dataName:d.name,
+				reporting:d.reporting,
 				swing:d.swing,
 				RVotes:d.RVotes || null,
 				DVotes:d.DVotes || null,

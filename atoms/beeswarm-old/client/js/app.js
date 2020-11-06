@@ -44,7 +44,7 @@ krep
 .append('svg')
 .html(`<polygon points="24.9,2.5 20.6,0 20.6,2 0,2 0,3 20.6,3 20.6,5 "></polygon>`)
 
-let urbanRuralVariables = [
+let oldVariables = [
 'Under 15% aged over 65',
 '15-20% aged over 65',
 '20-25% aged over 65',
@@ -160,7 +160,7 @@ const makeChart = (svg, dodge, max, className) => {
 }
 
 
-urbanRuralVariables.map(v => {
+oldVariables.map(v => {
 
 	let datum = data.filter(d => d.old === v && d.swing != null);
 

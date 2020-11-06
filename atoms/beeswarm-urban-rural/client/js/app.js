@@ -14,9 +14,13 @@ data.map(d => {
 	}
 })
 
-const countyIds = ['04013','12063'];
+const countyIds = ['04013','19053','48085','26037'];
 
-let key = d3.select('.interactive-wrapper-bees-urban-rural')
+let keyWrapper = d3.select('.interactive-wrapper-bees-urban-rural')
+.append("div")
+.attr('class', 'key-bees-wrapper')
+
+let key = keyWrapper
 .append("div")
 .attr('class', 'key-bees')
 
@@ -45,9 +49,9 @@ krep
 .html(`<polygon points="24.9,2.5 20.6,0 20.6,2 0,2 0,3 20.6,3 20.6,5 "></polygon>`)
 
 let urbanRuralVariables = [
-'Rural areas',
-'Medium and small metro areas',
-'Large metro areas'
+"Rural counties",
+"Medium and small metro counties",
+"Large metro counties"
 ]
 
 let isMobile = window.matchMedia('(max-width: 700px)').matches;
@@ -135,8 +139,6 @@ const makeChart = (svg, dodge, max, className) => {
 
 		let node = dodge.find(f => f.id === countyId);
 
-		//console.log(node)
-
 		if(node)
 		{
 			svg.append("text")
@@ -172,8 +174,6 @@ urbanRuralVariables.map(v => {
 
 	let dodge = new Dodge(datum, xScale, radius, padding);
 
-	dodge.map(d => console.log(d.id))
-
 	let max = dodge.find(f => f.y == d3.max(dodge, d => d.y))
 
 	let header = d3.select('.interactive-wrapper-bees-urban-rural')
@@ -182,7 +182,7 @@ urbanRuralVariables.map(v => {
 	.html(v)
 
 
-	/*let repPP = datum.filter(f => f.swing > 0).length * 100 / datum.length;
+	let repPP = datum.filter(f => f.swing > 0).length * 100 / datum.length;
 	let demPP = 100 - repPP;
 
 	let maxPP = d3.max([repPP, demPP])
@@ -206,12 +206,12 @@ urbanRuralVariables.map(v => {
 	subheader
 	.append('span')
 	.attr('class', 'bees-subheader-text')
-	.html(' swinging to ' + winner[0])*/
+	.html(' swung to ' + winner[0])
 
 	let svg = d3.select('.interactive-wrapper-bees-urban-rural')
 	.append("svg")
 	.attr('id', 'svg-beeswarm-' + v.replace(/[_()-\s%$,]/g, ""))
-	.attr('class', 'svg-beeswarm')
+	.attr('class', 'svg-beeswarm-urban-rural')
 	.attr("width", width)
 	.attr('height', 0)
 
@@ -263,6 +263,9 @@ urbanRuralVariables.map(v => {
 	}
 
 })
+
+keyWrapper.style('top', 135 + 'px')
+
 
 
 

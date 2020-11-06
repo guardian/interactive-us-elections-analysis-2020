@@ -66,65 +66,84 @@ let partiesRaw = data2020.map(d => {
 		return Object.values(d[1].candidates).map(d => d.party)
 	}
 })
-console.log('reporting at 98%')
+
 data2020.map(d => {
 
-	if(d[1].reporting && d[1].reporting >= 100)
+	if(d[1].reporting)
 	{
 		if(d[1].candidates)
 		{
-			if(d[1].candidates.find(party => party.party === 'R') && d[1].candidates.find(party => party.party === 'D'))
+			let RVotes = d[1].candidates.find(party => party.party === 'R').votes;
+			let DVotes = d[1].candidates.find(party => party.party === 'D').votes;
+			let OVotes = d[1].candidates.find(party => party.party === 'O');
+			let IVotes = d[1].candidates.find(party => party.party === 'I');
+
+			if(OVotes)
 			{
-				let RVotes = d[1].candidates.find(party => party.party === 'R').votes;
-				let DVotes = d[1].candidates.find(party => party.party === 'D').votes;
-				let OVotes = d[1].candidates.find(party => party.party === 'O');
-				let IVotes = d[1].candidates.find(party => party.party === 'I');
+				OVotes = d[1].candidates.find(party => party.party === 'O').votes;
+			}
 
-				if(OVotes)
+			if(IVotes)
+			{
+				IVotes = d[1].candidates.find(party => party.party === 'I').votes;
+			}
+
+
+			if(d[1].reporting >= 98)
+			{
+				if(d[1].candidates.find(party => party.party === 'R') && d[1].candidates.find(party => party.party === 'D'))
 				{
-					OVotes = d[1].candidates.find(party => party.party === 'O').votes;
+					
+					let RShare = RVotes / (RVotes + DVotes) * 100 || 0;
+					let DShare = DVotes / (RVotes + DVotes) * 100 || 0;
+					let margin2016 = data2016.find(id => id[0] === d[0]).margin2016;
+					let margin = RShare - DShare;
+					let swing = (margin - margin2016) / 2;
+
+					if(RShare > 0 && DShare > 0 )
+					{
+						data.push({
+						id:d[0],
+						name:d[1].name,
+						reporting:d[1].reporting,
+						swing:swing,
+						RVotes:RVotes || null,
+						DVotes:DVotes || null,
+						RShare:RShare || null,
+						DShare:DShare || null,
+						OVotes:OVotes || null,
+						IVotes:IVotes || null,
+						})
+					}
+					else
+					{
+						data.push({
+						id:d[0],
+						reporting:d[1].reporting,
+						name:d[1].name,
+						swing:null,
+						RVotes:null,
+						DVotes:null,
+						RShare:null,
+						DShare:null,
+						OVotes:null,
+						IVotes:null
+						})
+					}
+					
 				}
 
-				if(IVotes)
-				{
-					IVotes = d[1].candidates.find(party => party.party === 'I').votes;
-				}
-				
-				let RShare = RVotes / (RVotes + DVotes) * 100 || 0;
-				let DShare = DVotes / (RVotes + DVotes) * 100 || 0;
-				let margin2016 = data2016.find(id => id[0] === d[0]).margin2016;
-				let margin = RShare - DShare;
-				let swing = (margin - margin2016) / 2;
-
-				if(RShare > 0 && DShare > 0 )
-				{
+			}
+			else{
 					data.push({
-					id:d[0],
-					name:d[1].name,
-					swing:swing,
-					RVotes:RVotes || null,
-					DVotes:DVotes || null,
-					RShare:RShare || null,
-					DShare:DShare || null,
-					OVotes:OVotes || null,
-					IVotes:IVotes || null,
+						id:d[0],
+						reporting:d[1].reporting,
+						name:d[1].name,
+						RVotes:RVotes || null,
+						DVotes:DVotes || null,
+						OVotes:OVotes || null,
+						IVotes:IVotes || null
 					})
-				}
-				else
-				{
-					data.push({
-					id:d[0],
-					name:d[1].name,
-					swing:null,
-					RVotes:null,
-					DVotes:null,
-					RShare:null,
-					DShare:null,
-					OVotes:null,
-					IVotes:null
-					})
-				}
-				
 			}
 		}
 		else

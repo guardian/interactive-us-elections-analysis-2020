@@ -282,14 +282,6 @@ a, .u-fauxlink {
     -webkit-box-decoration-break: clone;
 }
 
-
-/* select alternating items starting with the second item */
-h2:nth-of-type(2), h2:nth-of-type(3) {
- font-size: 21px;
- max-width: 860px;
- border-top: 1px solid #bababa;
-}
-
 // .content__main-column--interactive blockquote, .prose blockquote {
 //   font-style: normal;
 //   margin: 0 0 10px 10px;

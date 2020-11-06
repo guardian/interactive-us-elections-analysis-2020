@@ -14,7 +14,7 @@ class ScrollyTeller {
         this.transparentUntilActive = config.transparentUntilActive;
         this.factor = 0;
 
-        this.isMobile ? this.factor = 83 : this.factor = 100;
+        this.isMobile ? this.factor = 84.7 : this.factor = 100;
 
         this.scrollWrapper.style.height = this.textBoxes.length * this.factor + "vh";
 

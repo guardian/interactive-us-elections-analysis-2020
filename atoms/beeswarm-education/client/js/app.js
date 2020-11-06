@@ -14,9 +14,13 @@ data.map(d => {
 	}
 })
 
-const countyIds = ['54047','48085'];
+const countyIds = ['26009','48215', '54047', '13135'];
 
-let key = d3.select('.interactive-wrapper-bees-education')
+let keyWrapper = d3.select('.interactive-wrapper-bees-education')
+.append("div")
+.attr('class', 'key-bees-wrapper')
+
+let key = keyWrapper
 .append("div")
 .attr('class', 'key-bees')
 
@@ -45,10 +49,10 @@ krep
 .html(`<polygon points="24.9,2.5 20.6,0 20.6,2 0,2 0,3 20.6,3 20.6,5 "></polygon>`)
 
 let educationVariables = [
-'Less than 15% with degree',
-'15-20% with degree',
-'20-30% with degree',
-'Over 30% with degree'
+"Counties with under 15% holding degree",
+"Counties with 15-20% holding degree",
+"Counties with 20-30% holding degree",
+"Counties with over 30% holding degree"
 ]
 
 let isMobile = window.matchMedia('(max-width: 700px)').matches;
@@ -75,7 +79,6 @@ let legend = d3.select('.interactive-wrapper-bees-education')
 
 legend.append('p')
 .html('County population')
-
 
 const lsvg = legend.append('svg')
 .attr('width', 110)
@@ -181,7 +184,7 @@ educationVariables.map(v => {
 	.html(v)
 
 
-	/*let repPP = datum.filter(f => f.swing > 0).length * 100 / datum.length;
+	let repPP = datum.filter(f => f.swing > 0).length * 100 / datum.length;
 	let demPP = 100 - repPP;
 
 	let maxPP = d3.max([repPP, demPP])
@@ -205,12 +208,12 @@ educationVariables.map(v => {
 	subheader
 	.append('span')
 	.attr('class', 'bees-subheader-text')
-	.html(' swinging to ' + winner[0])*/
+	.html(' swung to ' + winner[0])
 
 	let svg = d3.select('.interactive-wrapper-bees-education')
 	.append("svg")
 	.attr('id', 'svg-beeswarm-' + v.replace(/[_()-\s%$,]/g, ""))
-	.attr('class', 'svg-beeswarm')
+	.attr('class', 'svg-beeswarm-education')
 	.attr("width", width)
 	.attr('height', 0)
 
@@ -263,8 +266,7 @@ educationVariables.map(v => {
 
 })
 
-
-
+keyWrapper.style('top', 135 + 'px')
 
 
 

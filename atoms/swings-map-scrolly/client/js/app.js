@@ -40,9 +40,7 @@ annotations.sheets.annotations.map((state,i) => {
 
 //====================STRUCTURE===================
 
-let stateLabels = Object.entries(labels).map(d => d[1]).filter((d,i) => {
-	if(d.name != 'Colo.')return d
-});
+let stateLabels = Object.entries(labels).map(d => d[1]);
 
 let stateLabelsMobile = stateLabels.filter((d,i) => {
 	if(i%3 == 0 && d.name != 'Maine' && d.name != 'Utah')return d
@@ -85,7 +83,7 @@ let extents = [
             [-120,23.5]//[minLon, minLat]
         ]
 },
-{type: "LineString",id:"42",name:"Pennsylvania",coordinates:[[-81,38.1],[-73,38.1],[-73,42.51468907],[-81,42.51468907]]},
+{type: "LineString",id:"42",name:"Pennsylvania",coordinates:[[-80,39],[-75,39],[-75,42],[-80,42]]},
 {type: "LineString",id:"55",name:"Wisconsin",coordinates:[[-92.88931493,42.4919436],[-86.24954808,42.4919436],[-86.24954808,47.30249997],[-92.88931493,47.30249997]]},
 {type: "LineString",id:"26",name:"Michigan",coordinates:[[-90.41862022,41.69604543],[-82.12280564,41.69604543],[-82.12280564,48.30606297],[-90.41862022,48.30606297]]},
 {type: "LineString",id:"39",name:"Ohio",coordinates:[[-84.82033611,38.40314185],[-80.518991,38.40314185],[-80.518991,42.32323642],[-84.82033611,42.32323642]]},
@@ -93,7 +91,8 @@ let extents = [
 {type: "LineString",id:"12",name:"Florida",coordinates:[[-87.63489605,24.39630799],[-78,24.39630799],[-78,31.00096799],[-87.63489605,31.00096799]]},
 {type: "LineString",id:"04",name:"Arizona",coordinates:[[-114.81835846,31.33221343],[-109.04520153,31.33221343],[-109.04520153,37.00425996],[-114.81835846,37.00425996]]},
 {type: "LineString",id:"08",name:"Colorado",coordinates:[[-109.06018796,36.99242597],[-102.04158507,36.99242597],[-102.04158507,41.00340016],[-109.06018796,41.00340016]]},
-{type: "LineString",id:"48",name:"Texas",coordinates:[[-106.64564605,25.7],[-93.50782176,25.7],[-93.50782176,36.50045285],[-106.64564605,36.50045285]]}
+{type: "LineString",id:"48",name:"Texas",coordinates:[[-106.64564605,25.7],[-93.50782176,25.7],[-93.50782176,36.50045285],[-106.64564605,36.50045285]]},
+{type: "LineString",id:"13",name:"Georgia",coordinates:[[-85.605165,30.357851],[-80.839729,30.357851],[-80.839729,35],[-85.605165,35]]}
 ];
 
 let projection = d3.geoAlbersUsa()
@@ -102,7 +101,7 @@ let projection = d3.geoAlbersUsa()
 const path = d3.geoPath().projection(projection)
 
 let scaleArrow = d3.scaleLog()
-.range([0.01,0.5])
+.range([0.01,0.6])
 
 let lengthPoints = [];
 
@@ -218,7 +217,7 @@ const svgAnnotations = divLabels
 .attr('width', width)
 .attr('height', height)
 
-let annotationCoords = [-109.0489727,36.762131]
+let annotationCoords = [-83.1158877,45.018127]
 
 let flipAnnotation = svgAnnotations.append('g')
 
@@ -229,14 +228,14 @@ annotaionText.append('text')
 .style('text-anchor', 'start')
 .attr("dx", "0.3em")
 .attr("dy", "-2em")
-.text('Flip state')
+.text('Flip states')
 
 annotaionText.append('text')
 .attr('class', 'flip-states-annotation')
 .style('text-anchor', 'start')
 .attr("dx", "0.3em")
 .attr("dy", "-2em")
-.text('Flip state')
+.text('Flip states')
 
 
 let arrowshaft = flipAnnotation
@@ -449,14 +448,15 @@ annotations.sheets.annotations.map((annotation,i) => {
 			if(d.properties.parties)
 			{
 
-				cont++
-
 				let color = '#dcdcdc'
 
 				if(d.properties.parties.winner === 'R') color = '#c70000';
 				if(d.properties.parties.winner === 'D') color = '#25428F';
 				if(d.properties.parties.winner === 'I') color = '#f3c000';
 				if(d.properties.parties.winner === 'O') color = '#f3c000';
+				if(d.properties.parties.winner === 'R' && d.properties.parties.reporting < 100) color = '#f4cccc';
+				if(d.properties.parties.winner === 'D' && d.properties.parties.reporting < 100) color = '#d3d9e9';
+
 
 				context.fillStyle = color;
 				context.strokeStyle = color;
@@ -467,8 +467,6 @@ annotations.sheets.annotations.map((annotation,i) => {
 				context.stroke();
 			}
 			else{
-
-				cont2++
 
 				let color = '#dcdcdc';
 				
