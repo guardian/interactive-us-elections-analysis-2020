@@ -219,7 +219,7 @@ urbanRuralVariables.map(v => {
 	.call(
 	    d3.axisBottom(xScale)
 	    .tickFormat(d => parseInt(Math.abs(d)))
-	    .ticks(4)
+	    .ticks(isMobile ? 2 : 4)
 	)
 	.attr('transform', 'translate(0,0)')
 
