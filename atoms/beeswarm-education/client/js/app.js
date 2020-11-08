@@ -14,7 +14,7 @@ data.map(d => {
 	}
 })
 
-const countyIds = ['26009','48215', '54047', '13135'];
+const countyIds = ['26009', '54047', '13135'];
 
 let keyWrapper = d3.select('.interactive-wrapper-bees-education')
 .append("div")
@@ -67,7 +67,7 @@ const padding = isMobile ? 0 : 0.5;
 
 let xScale = d3.scaleLinear()
 .range([margin.left, width - margin.right])
-.domain(d3.extent(data, d => d.swing))
+.domain([-10,10])
 
 let radius = d3.scaleSqrt()
 .range([0,.5,1,2,4,8])
@@ -221,7 +221,7 @@ educationVariables.map(v => {
 	.call(
 	    d3.axisBottom(xScale)
 	    .tickFormat(d => parseInt(Math.abs(d)))
-	    .ticks(4)
+	    .ticks(isMobile ? 2 : 4)
 	)
 	.attr('transform', 'translate(0,0)')
 
@@ -242,7 +242,13 @@ educationVariables.map(v => {
 	texts.nodes().map((n,i) => {
 		if(i == 0)
 		{
-			n.innerHTML = n.innerHTML + 'pp';
+			n.innerHTML = n.innerHTML + 'pp and over';
+			n.setAttribute('dx' , '35px')
+		}
+		if(i == texts.nodes().length-1)
+		{
+			n.innerHTML = n.innerHTML + 'pp and over';
+			n.setAttribute('dx' , '-35px')
 		}
 		
 	})
@@ -266,7 +272,8 @@ educationVariables.map(v => {
 
 })
 
-keyWrapper.style('top', 135 + 'px')
+let paddingKeywrapper = isMobile ? 142 : 115;
+keyWrapper.style('top',  paddingKeywrapper + 'px')		
 
 
 

@@ -66,7 +66,7 @@ const padding = isMobile ? 0 : 0.5;
 
 let xScale = d3.scaleLinear()
 .range([margin.left, width - margin.right])
-.domain(d3.extent(data, d => d.swing))
+.domain([-10,10])
 
 let radius = d3.scaleSqrt()
 .range([0,.5,1,2,4,8])
@@ -240,7 +240,13 @@ urbanRuralVariables.map(v => {
 	texts.nodes().map((n,i) => {
 		if(i == 0)
 		{
-			n.innerHTML = n.innerHTML + 'pp';
+			n.innerHTML = n.innerHTML + 'pp and over';
+			n.setAttribute('dx' , '35px')
+		}
+		if(i == texts.nodes().length-1)
+		{
+			n.innerHTML = n.innerHTML + 'pp and over';
+			n.setAttribute('dx' , '-35px')
 		}
 		
 	})
@@ -264,7 +270,7 @@ urbanRuralVariables.map(v => {
 
 })
 
-keyWrapper.style('top', 135 + 'px')
+keyWrapper.style('top', 115 + 'px')
 
 
 

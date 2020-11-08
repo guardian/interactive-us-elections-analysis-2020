@@ -11,6 +11,9 @@ class Dodge {
 
     data.map(d =>{
 
+      if(d.swing >= 10)d.swing = 10;
+      if(d.swing <= -10)d.swing = -10;
+
       circles.push(
       {
         id:d.id,

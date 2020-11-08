@@ -2,7 +2,6 @@ import * as d3 from 'd3'
 import data from 'shared/js/data-parser.js'
 import demographics from 'assets/json/demographics.json'
 import Dodge from 'shared/js/Dodge.js'
-import * as d3Annotation from 'd3-svg-annotation'
 
 data.map(d => {
 

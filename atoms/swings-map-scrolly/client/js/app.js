@@ -24,8 +24,9 @@ annotations.sheets.annotations.map((state,i) => {
 
 	}
 
-	if(state.annotation && state.swing === 'swing')
+	if(/*state.annotation && */state.swing === 'swing')
 	{
+		console.log(state)
 		let obj = statesFeature.features.find(object => object.properties.name === state.area);
 
 		let index = statesFeature.features.findIndex((object,i) => object.properties.name === state.area);
@@ -423,6 +424,8 @@ annotations.sheets.annotations.map((annotation,i) => {
 		canvas
 		.style("width", width + "px")
 		.style("height", height + "px")
+
+		d3.select('.loading').html('')
 	}
 	if(annotation.annotation && annotation.id == 'choropleth')
 	{
@@ -440,9 +443,6 @@ annotations.sheets.annotations.map((annotation,i) => {
 		let context = canvas.node().getContext('2d');
 		const newpath = d3.geoPath().projection(projection)
 		newpath.context(context);
-
-		let cont = 0
-		let cont2 = 0
 
 		countiesFeature.features.map(d => {
 			if(d.properties.parties)
@@ -484,7 +484,7 @@ annotations.sheets.annotations.map((annotation,i) => {
 		.style("width", width + "px")
 		.style("height", height + "px")
 
-		console.log(cont, cont2)
+
 	}
 
 

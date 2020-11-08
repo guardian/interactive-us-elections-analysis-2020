@@ -10,4 +10,4 @@ curl -s https://gdn-cdn.s3.amazonaws.com/2020/11/us-general-election-data/prod/d
 
 curl https://interactive.guim.co.uk/docsdata-test/149AqDXTpDiMSZcKVgWXurGwW8cgAbQNC2wNiIOpZ4JI.json > ./assets/json/annotations.json
 
-gulp deploylive
+#gulp deploylive
