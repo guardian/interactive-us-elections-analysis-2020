@@ -87,6 +87,17 @@ h2:nth-of-type(2), h2:nth-of-type(3), h2:nth-of-type(4) {
         right: 0px;
         position: relative;
     }
+    &.can{
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+        fill:#c70000;
+
+    }
+    &.trump{
+        fill:#F3C100;
+        right: 0px;
+        position: relative;
+    }
 
     svg{
         height: 5px;
@@ -96,6 +107,8 @@ h2:nth-of-type(2), h2:nth-of-type(3), h2:nth-of-type(4) {
     span{
 
         max-width: 130px;
+
+        line-height: 15px;
 
          @include mq($from: 100px, $until: 620px){
             max-width: 80px;
@@ -115,6 +128,12 @@ h2:nth-of-type(2), h2:nth-of-type(3), h2:nth-of-type(4) {
 .key-text-rep{
 	margin-right: 6px;
     color: #c70000;
+    line-height: 18px;
+}
+
+.key-text-candidate{
+    margin-right: 6px;
+    color: #F3C100;
     line-height: 18px;
 }
 

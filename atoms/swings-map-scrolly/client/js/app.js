@@ -26,7 +26,6 @@ annotations.sheets.annotations.map((state,i) => {
 
 	if(/*state.annotation && */state.swing === 'swing')
 	{
-		console.log(state)
 		let obj = statesFeature.features.find(object => object.properties.name === state.area);
 
 		let index = statesFeature.features.findIndex((object,i) => object.properties.name === state.area);
@@ -351,6 +350,8 @@ const makeArrow = (context, centroid, scale, rotation, color) => {
 
 //================CANVAS======================================
 
+var t0 = Date.now();
+
 annotations.sheets.annotations.map((annotation,i) => {
 
 	if(annotation.annotation && annotation.id != 'choropleth')
@@ -489,6 +490,10 @@ annotations.sheets.annotations.map((annotation,i) => {
 
 
 })
+
+var t1 = Date.now();
+
+console.log((t1 - t0) + "ms");
 
 
 

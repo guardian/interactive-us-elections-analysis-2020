@@ -3,7 +3,6 @@ import data from 'shared/js/data-parser.js'
 import demographics from 'assets/json/demographics.json'
 import Dodge from 'shared/js/Dodge.js'
 
-
 data.map(d => {
 
 	let match = demographics.find(f => f.county_fip_id === +d.id)

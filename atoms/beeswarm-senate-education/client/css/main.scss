@@ -1,0 +1,24 @@
+@import "fonts";
+@import "mq";
+@import "palette";
+@import "beeswarm";
+//@import "enhancer";
+
+
+.key-wrapper {
+	span{
+
+        max-width: 107px !important;
+
+        line-height: 15px;
+
+         @include mq($from: 100px, $until: 620px){
+            max-width: 80px;
+         }
+        
+    }
+}
+
+.bees-header{
+	margin-bottom: 12px !important;
+}
