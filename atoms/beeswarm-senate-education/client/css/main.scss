@@ -4,6 +4,10 @@
 @import "beeswarm";
 //@import "enhancer";
 
+.interactive-wrapper-bees-senate-education{
+	border-bottom: 1px solid #dcdcdc;
+}
+
 
 .key-wrapper {
 	span{
@@ -21,4 +25,8 @@
 
 .bees-header{
 	margin-bottom: 12px !important;
+}
+
+.key-text-candidate{
+	margin-right: -10px !important;
 }

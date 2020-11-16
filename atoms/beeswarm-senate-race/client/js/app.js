@@ -271,7 +271,7 @@ racesVariables.map(v => {
 
 })
 
-let paddingKeywrapper = isMobile ? 80 : 75;
+let paddingKeywrapper = isMobile ? 90 : 75;
 keyWrapper.style('top',  paddingKeywrapper + 'px')
 
 if(window.resize)window.resize()	

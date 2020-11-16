@@ -270,7 +270,7 @@ educationVariables.map(v => {
 
 })
 
-let paddingKeywrapper = isMobile ? 105 : 85;
+let paddingKeywrapper = isMobile ? 115 : 85;
 keyWrapper.style('top',  paddingKeywrapper + 'px')
 
 if(window.resize)window.resize()	
